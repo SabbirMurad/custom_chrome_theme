@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  background: #111;
+  color: white;
+  display: flex;
+  height: 100vh;
+  font-family: Archivo, Arial, sans-serif;
+  position: relative;
+}
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shortcuts-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  position: absolute;
+  bottom: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.shortcuts-wrapper .item {
+  width: 56px;
+  height: 56px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.shortcuts-wrapper .item img {
+  width: 24px;
+  height: 24px;
+}
+
+.glass-card {
+  padding: 30px;
+  border-radius: 20px;
+  /* GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(24, 24, 24, 0.08);
+  color: white;
+  text-align: center;
+}
+
+#blur-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+#clock-wrapper {
+  height: 96px;
+  width: 248px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 118px auto 0 auto;
+  flex-direction: column;
+  gap: 9px;
+}
+
+#clock {
+  font-size: 56px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+#date {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#search-wrapper {
+  position: absolute;
+  top: 36px;
+  right: 48px;
+  padding: 0px 12px;
+  display: flex;
+  width: 348px;
+  height: 40px;
+  border-radius: 6px;
+  align-items: center;
+}
+
+#search-wrapper img {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+#search-wrapper input {
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#search-wrapper input::placeholder {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: Archivo, Arial, sans-serif;
+}

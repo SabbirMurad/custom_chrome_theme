@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <video src="assets/confused-frieren.mp4" autoplay loop></video>
+    <div id="blur-bg"></div>
+    <section id="foreground">
+        <div id="clock-wrapper" class="glass-card">
+            <div id="clock"></div>
+            <div id="date"></div>
+        </div>
+        <div class="shortcuts-wrapper">
+            <div class="item glass-card add-more">
+                <img src="assets/add.png" alt="Add">
+            </div>
+        </div>
+        <div id="search-wrapper" class="glass-card">
+            <img src="assets/search.png" alt="search">
+            <input type="text" placeholder="Search ..." name="search">
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
