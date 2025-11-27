@@ -11,7 +11,7 @@ function updateClock() {
     // const s = String(now.getSeconds()).padStart(2, '0');
     const day = now.getDay();
 
-    document.getElementById("clock").textContent = `${h}:${m}`;
+    document.getElementById("clock").textContent = `${h > 12 ? h - 12 : h}:${m} ${h > 12 ? 'PM' : 'AM'}`;
     document.getElementById("date").textContent = `${days[day]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
 }
 
