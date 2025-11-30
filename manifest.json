@@ -4,9 +4,14 @@
   "version": "1.0",
   "description": "Shows a clock in the center of the new tab page.",
   "permissions": [
-    "bookmarks"
+    "bookmarks",
+    "storage",
+    "tabs"
   ],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
-  }
+  },
+  "host_permissions": [
+    "file://*/*"
+  ]
 }

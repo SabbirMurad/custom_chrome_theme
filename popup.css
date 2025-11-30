@@ -1,0 +1,145 @@
+/* Dark transparent overlay */
+.shortcut-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 500;
+    transition: opacity 0.25s ease;
+}
+
+.shortcut-sidebar-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Sidebar Panel */
+.sidebar {
+    width: 372px;
+    height: calc(100% - 42px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    border-radius: 0px;
+    align-items: flex-start;
+}
+
+.sidebar h1 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.sidebar h2 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+/* Sidebar visible */
+.shortcut-sidebar-overlay.show .sidebar {
+    transform: translateX(0);
+}
+
+.sidebar input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.sidebar-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidebar-actions button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#sidebar .shortcuts-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#sidebar .shortcuts-wrapper .item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ffffff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+#sidebar .shortcuts-wrapper .item.dragging  {
+    border: 1px solid #5c75ff;
+}
+#sidebar .shortcuts-wrapper .item.dragging  > * {
+    opacity: 0.5;
+}
+
+#sidebar .shortcuts-wrapper .item.drop-target {
+    border-top: 2px solid #5c75ff;
+}
+
+#sidebar .shortcuts-wrapper .item img {
+    width: 24px;
+    height: 24px;
+}
+
+#sidebar .shortcuts-wrapper .item .close {
+    width: 14px;
+    height: 14px;
+}
+
+#sidebar .shortcuts-wrapper .item span {
+    font-size: 14px;
+    width: calc(100% - 24px - 14px - 24px);
+    text-align: start;
+    margin: 0 12px;
+}
+
+#sidebar .new-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 48px;
+}
+
+#sidebar .new-wrapper img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+#sidebar .new-wrapper input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    border-radius: 0px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+#sidebar .new-wrapper input::placeholder {
+    color: #ffffff8e;
+}

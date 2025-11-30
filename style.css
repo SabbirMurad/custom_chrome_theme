@@ -1,3 +1,30 @@
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.55);
+}
+
+/* Firefox support */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.35) rgba(255,255,255,0.05);
+}
+
 body {
   margin: 0;
   background: #111;
@@ -28,29 +55,42 @@ video {
   flex-direction: column;
 }
 
-.shortcuts-wrapper {
+#shortcuts-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
   position: absolute;
-  bottom: 72px;
+  bottom: 204px;
   left: 50%;
   transform: translateX(-50%);
+  max-width: 696px;
+  flex-wrap: wrap;
 }
 
-.shortcuts-wrapper .item {
-  width: 56px;
-  height: 56px;
+#shortcuts-wrapper .item {
+  width: 64px;
+  height: 64px;
   padding: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border-radius: 12px;
+  border: 1px solid rgba(24, 24, 24, 0.2);
 }
 
-.shortcuts-wrapper .item img {
+#shortcuts-wrapper .item .container {
+  width: 40px;
+  height: 40px;
+  background: #ffffff33;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#shortcuts-wrapper .item img {
   width: 24px;
   height: 24px;
 }
@@ -104,13 +144,15 @@ video {
 #search-wrapper {
   position: absolute;
   top: 36px;
-  right: 48px;
+  right: 50%;
   padding: 0px 12px;
   display: flex;
-  width: 348px;
+  width: 684px;
   height: 40px;
   border-radius: 6px;
   align-items: center;
+  transform: translateX(50%);
+  display: none;
 }
 
 #search-wrapper img {
@@ -133,4 +175,30 @@ video {
   font-size: 14px;
   font-weight: 300;
   font-family: Archivo, Arial, sans-serif;
+}
+
+.settings-container {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  padding: 12px;
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.settings-container img {
+  width: 24px;
+  height: 24px;
+}
+
+.settings-container input {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  opacity: 0;
 }
