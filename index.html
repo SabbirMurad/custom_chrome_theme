@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>New Tab</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/shortcuts.css">
+    <link rel="stylesheet" href="assets/css/bookmark.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
@@ -13,7 +14,7 @@
 </head>
 
 <body>
-    <video id="bg-video" src="assets/confused-frieren.mp4" autoplay loop></video>
+    <video id="bg-video" src="assets/video/confused-frieren.mp4" autoplay loop></video>
     <div id="blur-bg"></div>
     <section id="foreground">
         <div id="clock-wrapper" class="glass-card">
@@ -22,15 +23,15 @@
         </div>
         <div id="shortcuts-wrapper">
             <div class="item glass-card add-more">
-                <img src="assets/edit.png" alt="Add">
+                <img src="assets/icon/edit.png" alt="Add">
             </div>
         </div>
         <div id="search-wrapper" class="glass-card">
-            <img src="assets/search.svg" alt="search">
+            <img src="assets/icon/search.svg" alt="search">
             <input type="text" placeholder="Search ..." name="search">
         </div>
         <div class="settings-container glass-card">
-            <img src="assets/setting.svg" alt="settings">
+            <img src="assets/icon/setting.svg" alt="settings">
             <input id="videoInput" type="file" accept=".mp4">
         </div>
 
@@ -40,7 +41,7 @@
                 <h1>Add New</h1>
                 <div class="new-wrapper">
                     <input id="shortcut-url" type="text" placeholder="https://example.com">
-                    <img id="add-shortcut-btn" src="assets/check_all.svg" alt="">
+                    <img id="add-shortcut-btn" src="assets/icon/check_all.svg" alt="">
                 </div>
                 <h2>Added Shortcuts</h2>
                 <div class="shortcuts-wrapper">
@@ -48,9 +49,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Bookmarks -->
+        <div id="bookmark-container"></div>
     </section>
-    <script src="clock.js"></script>
-    <script src="shortcuts.js"></script>
+    <script src="assets/js/clock.js"></script>
+    <script src="assets/js/bookmark.js"></script>
+    <script src="assets/js/shortcuts.js"></script>
 </body>
 
 </html>

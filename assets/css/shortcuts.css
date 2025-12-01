@@ -1,3 +1,43 @@
+#shortcuts-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  position: absolute;
+  bottom: 204px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 696px;
+  flex-wrap: wrap;
+}
+
+#shortcuts-wrapper .item {
+  width: 64px;
+  height: 64px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 1px solid rgba(24, 24, 24, 0.2);
+}
+
+#shortcuts-wrapper .item .container {
+  width: 40px;
+  height: 40px;
+  background: #ffffff33;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#shortcuts-wrapper .item img {
+  width: 24px;
+  height: 24px;
+}
+
 /* Dark transparent overlay */
 .shortcut-sidebar-overlay {
     position: fixed;
@@ -76,14 +116,27 @@
     overflow-y: auto;
 }
 
+#sidebar .shortcuts-wrapper .item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+#sidebar .shortcuts-wrapper .item-wrapper img {
+    width: 24px;
+    height: 24px;
+    user-select: none;
+}
+
 #sidebar .shortcuts-wrapper .item {
     display: flex;
+    width: 100%;
     align-items: center;
     border: 1px solid #ffffff;
     padding: 8px 12px;
     border-radius: 6px;
-    margin-bottom: 12px;
-    cursor: pointer;
 }
 
 #sidebar .shortcuts-wrapper .item.dragging  {
