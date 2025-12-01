@@ -77,7 +77,7 @@ async function loadShortcuts() {
         sidebarShortcuts.classList.add('item-wrapper');
         sidebarShortcuts.setAttribute("draggable", "true");
         sidebarShortcuts.innerHTML = `
-            <img src="assets/drug.svg" alt="Drag" draggable="false">
+            <img src="assets/icon/drug.svg" alt="Drag" draggable="false">
             <div class="item">
                 <img src="${faviconLink}" alt="Shortcut">
                 <span>${url}</span>
