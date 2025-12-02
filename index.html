@@ -17,10 +17,14 @@
     <video id="bg-video" autoplay loop></video>
     <div id="blur-bg"></div>
     <section id="foreground">
+
+        <!-- Clock -->
         <div id="clock-wrapper" class="glass-card">
             <div id="clock"></div>
             <div id="date"></div>
         </div>
+
+        <!-- Shortcuts -->
         <div id="shortcuts-wrapper">
             <div class="item glass-card add-more">
                 <img src="assets/icon/edit.png" alt="Add">
@@ -30,6 +34,8 @@
             <img src="assets/icon/search.svg" alt="search">
             <input type="text" placeholder="Search ..." name="search">
         </div>
+
+        <!-- Settings -->
         <div class="settings-container glass-card">
             <img src="assets/icon/setting.svg" alt="settings">
             <input id="videoInput" type="file" accept=".mp4">
@@ -37,7 +43,7 @@
 
         <!-- Sidebar Overlay -->
         <div id="shortcut-sidebar-overlay" class="shortcut-sidebar-overlay hidden">
-            <div id="sidebar" class="sidebar glass-card">
+            <div id="shortcut-sidebar" class="sidebar glass-card">
                 <h1>Add New</h1>
                 <div class="new-wrapper">
                     <input id="shortcut-url" type="text" placeholder="https://example.com">
@@ -51,7 +57,41 @@
         </div>
 
         <!-- Bookmarks -->
-        <div id="bookmark-container">
+        <div id="bookmark-container"></div>
+
+        <div id="google-wrapper">
+            <div id="icon-container" class="glass-card">
+                <img src="assets/icon/google.png" alt="Google">
+            </div>
+            <div class="item-container glass-card">
+                <a class="item" href="https://docs.google.com/forms/u/0/" target="_blank">
+                    <img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_spreadsheet_x32.png"
+                        alt="Google">
+                    <span>Sheets</span>
+                </a>
+                <a class="item" href="https://docs.google.com/forms/u/0/" target="_blank">
+                    <img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x32.png"
+                        alt="Google">
+                    <span>Documents</span>
+                </a>
+                <a class="item" href="https://docs.google.com/forms/u/0/" target="_blank">
+                    <img src="https://www.gstatic.com/images/branding/product/1x/forms_2020q4_48dp.png" alt="Google">
+                    <span>Forms</span>
+                </a>
+                <a class="item" href="https://drive.google.com/u/0/" target="_blank">
+                    <img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_drive_x32.png" alt="Google">
+                    <span>Drive</span>
+                </a>
+                <a class="item" href="https://play.google.com/console/u/0/" target="_blank">
+                    <img src="https://www.gstatic.com/play-apps-publisher/play_console_favicon.png" alt="Google">
+                    <span>Play Console</span>
+                </a>
+                <a class="item" href="https://console.firebase.google.com/u/0/" target="_blank">
+                    <img src="https://www.gstatic.com/devrel-devsite/prod/v210625d4186b230b6e4f2892d2ebde056c890c9488f9b443a741ca79ae70171d/firebase/images/favicon.png"
+                        alt="Google">
+                    <span>Firebase</span>
+                </a>
+            </div>
         </div>
     </section>
     <script src="assets/js/clock.js"></script>

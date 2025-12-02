@@ -55,7 +55,7 @@
 }
 
 /* Sidebar Panel */
-.sidebar {
+#shortcut-sidebar {
     width: 372px;
     height: calc(100% - 42px);
     padding: 20px;
@@ -67,14 +67,14 @@
     align-items: flex-start;
 }
 
-.sidebar h1 {
+#shortcut-sidebar h1 {
     margin: 0;
     font-size: 24px;
     margin-bottom: 12px;
     font-weight: 600;
 }
 
-.sidebar h2 {
+#shortcut-sidebar h2 {
     margin: 0;
     font-size: 24px;
     margin-bottom: 24px;
@@ -82,11 +82,11 @@
 }
 
 /* Sidebar visible */
-.shortcut-sidebar-overlay.show .sidebar {
+.shortcut-sidebar-overlay.show #shortcut-sidebar {
     transform: translateX(0);
 }
 
-.sidebar input {
+#shortcut-sidebar input {
     padding: 10px;
     border-radius: 10px;
     border: none;
@@ -94,20 +94,7 @@
     font-size: 15px;
 }
 
-.sidebar-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.sidebar-actions button {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-#sidebar .shortcuts-wrapper {
+#shortcut-sidebar .shortcuts-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -116,7 +103,7 @@
     overflow-y: auto;
 }
 
-#sidebar .shortcuts-wrapper .item-wrapper {
+#shortcut-sidebar .shortcuts-wrapper .item-wrapper {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -124,13 +111,13 @@
     cursor: pointer;
 }
 
-#sidebar .shortcuts-wrapper .item-wrapper img {
+#shortcut-sidebar .shortcuts-wrapper .item-wrapper img {
     width: 24px;
     height: 24px;
     user-select: none;
 }
 
-#sidebar .shortcuts-wrapper .item {
+#shortcut-sidebar .shortcuts-wrapper .item {
     display: flex;
     width: 100%;
     align-items: center;
@@ -139,35 +126,35 @@
     border-radius: 6px;
 }
 
-#sidebar .shortcuts-wrapper .item.dragging  {
+#shortcut-sidebar .shortcuts-wrapper .item.dragging  {
     border: 1px solid #5c75ff;
 }
-#sidebar .shortcuts-wrapper .item.dragging  > * {
+#shortcut-sidebar .shortcuts-wrapper .item.dragging  > * {
     opacity: 0.5;
 }
 
-#sidebar .shortcuts-wrapper .item.drop-target {
+#shortcut-sidebar .shortcuts-wrapper .item.drop-target {
     border-top: 2px solid #5c75ff;
 }
 
-#sidebar .shortcuts-wrapper .item img {
+#shortcut-sidebar .shortcuts-wrapper .item img {
     width: 24px;
     height: 24px;
 }
 
-#sidebar .shortcuts-wrapper .item .close {
+#shortcut-sidebar .shortcuts-wrapper .item .close {
     width: 14px;
     height: 14px;
 }
 
-#sidebar .shortcuts-wrapper .item span {
+#shortcut-sidebar .shortcuts-wrapper .item span {
     font-size: 14px;
     width: calc(100% - 24px - 14px - 24px);
     text-align: start;
     margin: 0 12px;
 }
 
-#sidebar .new-wrapper {
+#shortcut-sidebar .new-wrapper {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -175,13 +162,13 @@
     margin-bottom: 48px;
 }
 
-#sidebar .new-wrapper img {
+#shortcut-sidebar .new-wrapper img {
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
 
-#sidebar .new-wrapper input {
+#shortcut-sidebar .new-wrapper input {
     width: 100%;
     height: 40px;
     padding: 0 12px;
@@ -193,6 +180,6 @@
     font-size: 14px;
 }
 
-#sidebar .new-wrapper input::placeholder {
+#shortcut-sidebar .new-wrapper input::placeholder {
     color: #ffffff8e;
 }

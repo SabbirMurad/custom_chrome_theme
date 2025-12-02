@@ -88,6 +88,7 @@ video {
   margin: 118px auto 0 auto;
   flex-direction: column;
   gap: 9px;
+  cursor: default;
 }
 
 #clock {
@@ -161,4 +162,67 @@ video {
   height: 24px;
   position: absolute;
   opacity: 0;
+}
+
+
+#google-wrapper {
+  position: absolute;
+  top: 72px;
+  right: 18px;
+}
+
+#google-wrapper #icon-container {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  cursor: pointer;
+}
+
+#google-wrapper #icon-container img {
+  width: 24px;
+  height: 24px;
+}
+
+#google-wrapper .item-container {
+  display: flex;
+  width: 336px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  border-radius: 6px;
+  padding: 18px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  row-gap: 24px;
+  display: none;
+}
+
+#google-wrapper:hover .item-container {
+  display: flex;
+}
+
+#google-wrapper .item-container .item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  width: calc(100% / 4);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#google-wrapper .item-container .item img {
+  width: 32px;
+  height: 32px;
+}
+
+#google-wrapper .item-container .item span {
+  font-size: 12px;
+  font-weight: 200;
 }
