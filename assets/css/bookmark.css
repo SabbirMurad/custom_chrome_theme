@@ -1,11 +1,11 @@
 #bookmark-container {
-    width: calc(100% - 24px);
-    position: absolute;
     top: 0;
     left: 0;
     padding: 12px;
     display: flex;
+    position: absolute;
     align-items: center;
+    width: calc(100% - 24px);
     justify-content: space-between;
 }
 
