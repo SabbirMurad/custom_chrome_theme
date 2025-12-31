@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/clock.css">
     <link rel="stylesheet" href="assets/css/shortcuts.css">
     <link rel="stylesheet" href="assets/css/bookmark.css">
+    <link rel="stylesheet" href="assets/css/google.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +18,7 @@
 </head>
 
 <body>
-    <video id="bg-video" autoplay loop></video>
+    <video id="bg-video" autoplay loop muted></video>
     <div id="blur-bg"></div>
     <section id="foreground">
 
@@ -41,7 +42,6 @@
         <!-- Settings -->
         <div class="settings-container glass-card" id="settings-btn">
             <img src="assets/icon/setting.svg" alt="settings">
-            <!-- <input id="videoInput" type="file" accept=".mp4"> -->
         </div>
 
         <!-- Sidebar Overlay -->
@@ -62,6 +62,16 @@
         <!-- Settings Sidebar Overlay -->
         <div id="settings-sidebar-overlay" class="settings-sidebar-overlay hidden">
             <div id="settings-sidebar" class="sidebar glass-card">
+                <h1>Background</h1>
+                <div id="background-settings-wrapper" class="item-wrapper">
+                    <div class="available-videos">
+                        <img src="assets/video/confused-frieren.mp4" alt="">
+                    </div>
+                    <div class="video-selector">
+                        <img src="assets/icon/setting.svg" alt="settings">
+                        <input id="videoInput" type="file" accept=".mp4">
+                    </div>
+                </div>
                 <h1>Clock</h1>
                 <div id="clock-settings-wrapper" class="item-wrapper" item-name="clock">
                     <div class="item">
@@ -70,15 +80,33 @@
                     </div>
                     <div class="item position">
                         <span>Position</span>
-                        <div class="horizontal-clock-position-wrapper">
-                            <input type="radio" name="horizontal-clock-position" value="left" checked> Left
-                            <input type="radio" name="horizontal-clock-position" value="horizontal-center"> Center
-                            <input type="radio" name="horizontal-clock-position" value="right"> Right
+                        <div class="horizontal-clock-position-wrapper position-option-wrapper">
+                            <input type="radio" name="horizontal-clock-position" value="left">
+                            <span>Left</span>
+                            <input type="number" side-type="left" disabled>
+                            <span>Px</span>
+                            <div class="gap"></div>
+                            <input type="radio" name="horizontal-clock-position" value="horizontal-center">
+                            <span>Center</span>
+                            <div class="gap"></div>
+                            <input type="radio" name="horizontal-clock-position" value="right">
+                            <span>Right</span>
+                            <input type="number" side-type="right" disabled>
+                            <span>Px</span>
                         </div>
-                        <div class="vertical-clock-position-wrapper">
-                            <input type="radio" name="vertical-clock-position" value="top" checked> Top
-                            <input type="radio" name="vertical-clock-position" value="vertical-center"> Center
-                            <input type="radio" name="vertical-clock-position" value="bottom"> Bottom
+                        <div class="vertical-clock-position-wrapper position-option-wrapper">
+                            <input type="radio" name="vertical-clock-position" value="top">
+                            <span>Top</span>
+                            <input type="number" side-type="top" disabled>
+                            <span>Px</span>
+                            <div class="gap"></div>
+                            <input type="radio" name="vertical-clock-position" value="vertical-center">
+                            <span>Center</span>
+                            <div class="gap"></div>
+                            <input type="radio" name="vertical-clock-position" value="bottom">
+                            <span>Bottom</span>
+                            <input type="number" side-type="bottom" disabled>
+                            <span>Px</span>
                         </div>
                     </div>
                 </div>
@@ -109,42 +137,13 @@
         <!-- Bookmarks -->
         <div id="bookmark-container"></div>
 
+        <!-- Google Items -->
         <div id="google-wrapper">
             <div id="icon-container" class="glass-card">
                 <img src="assets/icon/google.png" alt="Google">
             </div>
             <div class="item-container glass-card">
-                <a class="item" href="https://docs.google.com/spreadsheets/u/0/" target="_blank">
-                    <img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_spreadsheet_x32.png"
-                        alt="Google">
-                    <span>Sheets</span>
-                </a>
-                <a class="item" href="https://docs.google.com/document/u/0/" target="_blank">
-                    <img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x32.png"
-                        alt="Google">
-                    <span>Documents</span>
-                </a>
-                <a class="item" href="https://docs.google.com/forms/u/0/" target="_blank">
-                    <img src="https://www.gstatic.com/images/branding/product/1x/forms_2020q4_48dp.png" alt="Google">
-                    <span>Forms</span>
-                </a>
-                <a class="item" href="https://drive.google.com/u/0/" target="_blank">
-                    <img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_drive_x32.png" alt="Google">
-                    <span>Drive</span>
-                </a>
-                <a class="item" href="https://play.google.com/console/u/0/" target="_blank">
-                    <img src="https://www.gstatic.com/play-apps-publisher/play_console_favicon.png" alt="Google">
-                    <span>Play Console</span>
-                </a>
-                <a class="item" href="https://console.firebase.google.com/u/0/" target="_blank">
-                    <img src="https://www.gstatic.com/devrel-devsite/prod/v210625d4186b230b6e4f2892d2ebde056c890c9488f9b443a741ca79ae70171d/firebase/images/favicon.png"
-                        alt="Google">
-                    <span>Firebase</span>
-                </a>
-                <a class="item" href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
-                    <img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_email_x32.png" alt="Google">
-                    <span>Gmail</span>
-                </a>
+
             </div>
         </div>
     </section>
@@ -153,6 +152,7 @@
     <script src="assets/js/bookmark.js"></script>
     <script src="assets/js/shortcuts.js"></script>
     <script src="assets/js/background.js"></script>
+    <script src="assets/js/google.js"></script>
 </body>
 
 </html>

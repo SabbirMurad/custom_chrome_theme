@@ -58,13 +58,15 @@ async function setBackgroundVideo() {
 }
 
 // Listen for file selection
-// document.getElementById("videoInput").addEventListener("change", async (event) => {
-//     const file = event.target.files[0];
-//     if (!file) return;
+const videoInput = document.querySelector("#settings-sidebar .video-selector #videoInput")
 
-//     await saveVideoToDB(file);
-//     setBackgroundVideo(); // instantly apply
-// });
+videoInput.addEventListener("change", async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    await saveVideoToDB(file);
+    setBackgroundVideo(); // instantly apply
+});
 
 // Load video on page load
 setBackgroundVideo();

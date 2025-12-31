@@ -44,9 +44,31 @@ for (let colorPicker of textColorPickers) {
 }
 
 // Position
-const positionRadios = document.querySelectorAll('#settings-sidebar .item-wrapper .item.position input[type="radio"]');
+const positionWrapper = document.querySelector('#settings-sidebar .item-wrapper .item.position');
 
-let clockWrapper = document.getElementById('clock-wrapper');
+const positionRadios = positionWrapper.querySelectorAll('input[type="radio"]');
+
+const clockWrapper = document.getElementById('clock-wrapper');
+
+const leftTextInput = positionWrapper.querySelector('input[side-type="left"]');
+const rightTextInput = positionWrapper.querySelector('input[side-type="right"]');
+const topTextInput = positionWrapper.querySelector('input[side-type="top"]');
+const bottomTextInput = positionWrapper.querySelector('input[side-type="bottom"]');
+
+let inputDelayTimer;
+
+[leftTextInput, rightTextInput, topTextInput, bottomTextInput].forEach(textInput => {
+    textInput.addEventListener('input', (e) => {
+        let side = textInput.getAttribute('side-type');
+        let val = textInput.value;
+
+        clearTimeout(inputDelayTimer);
+
+        inputDelayTimer = setTimeout(() => {
+            clockWrapper.style.setProperty(side, val + 'px');
+        }, 500);
+    });
+})
 
 positionRadios.forEach(radio => {
     radio.addEventListener('change', (e) => {
@@ -56,31 +78,49 @@ positionRadios.forEach(radio => {
             clockWrapper.style.left = '0';
             clockWrapper.style.right = 'unset';
             clockWrapper.classList.remove('horizontal-center');
+
+            leftTextInput.removeAttribute('disabled');
+            rightTextInput.setAttribute('disabled', true);
         }
         else if (value === 'right') {
             clockWrapper.style.right = '0';
             clockWrapper.style.left = 'unset';
             clockWrapper.classList.remove('horizontal-center');
+
+            rightTextInput.removeAttribute('disabled');
+            leftTextInput.setAttribute('disabled', true);
         }
         else if (value === 'horizontal-center') {
             clockWrapper.style.left = 'unset';
             clockWrapper.style.right = 'unset';
             clockWrapper.classList.add('horizontal-center');
+
+            leftTextInput.setAttribute('disabled', true);
+            rightTextInput.setAttribute('disabled', true);
         }
         else if (value === 'top') {
             clockWrapper.style.top = '0';
             clockWrapper.style.bottom = 'unset';
             clockWrapper.classList.remove('vertical-center');
+
+            topTextInput.removeAttribute('disabled');
+            bottomTextInput.setAttribute('disabled', true);
         }
         else if (value === 'bottom') {
             clockWrapper.style.bottom = '0';
             clockWrapper.style.top = 'unset';
             clockWrapper.classList.remove('vertical-center');
+
+            bottomTextInput.removeAttribute('disabled');
+            topTextInput.setAttribute('disabled', true);
         }
         else if (value === 'vertical-center') {
             clockWrapper.style.top = 'unset';
             clockWrapper.style.bottom = 'unset';
             clockWrapper.classList.add('vertical-center');
+
+            topTextInput.setAttribute('disabled', true);
+            bottomTextInput.setAttribute('disabled', true);
         }
     });
 });
