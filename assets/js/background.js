@@ -58,13 +58,13 @@ async function setBackgroundVideo() {
 }
 
 // Listen for file selection
-document.getElementById("videoInput").addEventListener("change", async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+// document.getElementById("videoInput").addEventListener("change", async (event) => {
+//     const file = event.target.files[0];
+//     if (!file) return;
 
-    await saveVideoToDB(file);
-    setBackgroundVideo(); // instantly apply
-});
+//     await saveVideoToDB(file);
+//     setBackgroundVideo(); // instantly apply
+// });
 
 // Load video on page load
 setBackgroundVideo();

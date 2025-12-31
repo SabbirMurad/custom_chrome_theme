@@ -116,7 +116,6 @@ async function removeShortcut(url) {
 // Sidebar open/close
 // ---------------------------
 const overlay = document.getElementById('shortcut-sidebar-overlay');
-const sidebar = document.getElementById('sidebar');
 const addButton = document.querySelector('#shortcuts-wrapper .add-more');
 
 addButton.onclick = () => {

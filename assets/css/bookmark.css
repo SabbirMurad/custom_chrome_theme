@@ -1,7 +1,6 @@
 #bookmark-container {
-    top: 0;
-    left: 0;
-    padding: 12px;
+    top: 12px;
+    left: 12px;
     display: flex;
     position: absolute;
     align-items: center;
@@ -17,12 +16,12 @@
 #bookmark-container .container {
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
 #bookmark-container .container .bookmark-item {
     padding: 8px;
     border-radius: 6px;
-    margin: 0 6px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -33,7 +32,7 @@
 #bookmark-container .container .bookmark-item span {
     text-align: start;
     line-height: 1.4;
-    color: #ffffff;
+    color: var(--bookmark-text-color);
 }
 
 #bookmark-container .container .bookmark-item:hover {
@@ -56,16 +55,15 @@
     gap: 8px;
     padding: 8px;
     border-radius: 6px;
-    margin: 0 6px;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: #ffffff;
+    color: var(--bookmark-text-color);
 }
 
 #bookmark-container .container .bookmark-folder .bookmark-children {
     position: absolute;
     top: 100%;
-    left: 6px;
+    left: 0px;
     padding: 8px;
     border-radius: 6px;
     width: 244px;
@@ -75,7 +73,7 @@
 
 #bookmark-container .container.other-bookmarks .bookmark-folder .bookmark-children {
     left: unset;
-    right: 6px;
+    right: 0px;
 }
 
 #bookmark-container .container .bookmark-folder:hover .bookmark-children {
@@ -89,7 +87,7 @@
 #bookmark-container .container .bookmark-folder .bookmark-children .bookmark-item span {
     text-align: start;
     line-height: 1.4;
-    color: #ffffff;
+    color: var(--bookmark-text-color);
 }
 
 
@@ -98,7 +96,7 @@
 }
 
 
-#bookmark-container .container .bookmark-folder .folder-title img {
+#bookmark-container .container .bookmark-folder .folder-title svg {
     width: 16px;
     height: 16px;
     user-select: none;

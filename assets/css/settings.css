@@ -1,0 +1,48 @@
+/* Dark transparent overlay */
+.settings-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 500;
+    transition: opacity 0.25s ease;
+}
+
+.settings-sidebar-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Sidebar Panel */
+#settings-sidebar {
+    width: 100%;
+    max-width: 572px;
+    height: calc(100% - 42px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    border-radius: 0px;
+    align-items: flex-start;
+}
+
+/* Sidebar visible */
+.settings-sidebar-overlay.show #settings-sidebar {
+    transform: translateX(0);
+}
+
+#settings-sidebar .item-wrapper {
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+#settings-sidebar .item-wrapper .item.position {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

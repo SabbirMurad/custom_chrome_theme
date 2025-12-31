@@ -1,0 +1,26 @@
+#clock-wrapper {
+  height: 96px;
+  width: 284px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 9px;
+  cursor: default;
+
+  position: absolute;
+  top: 118px;
+}
+
+#clock {
+  font-size: 56px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: var(--clock-text-color);
+}
+
+#date {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--clock-text-color);
+}

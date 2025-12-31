@@ -67,11 +67,17 @@
     align-items: flex-start;
 }
 
+/* Sidebar visible */
+.shortcut-sidebar-overlay.show #shortcut-sidebar {
+    transform: translateX(0);
+}
+
 #shortcut-sidebar h1 {
     margin: 0;
     font-size: 24px;
     margin-bottom: 12px;
     font-weight: 600;
+    color: var(--shortcut-text-color);
 }
 
 #shortcut-sidebar h2 {
@@ -79,11 +85,7 @@
     font-size: 24px;
     margin-bottom: 24px;
     font-weight: 600;
-}
-
-/* Sidebar visible */
-.shortcut-sidebar-overlay.show #shortcut-sidebar {
-    transform: translateX(0);
+    color: var(--shortcut-text-color);
 }
 
 #shortcut-sidebar input {
@@ -152,6 +154,7 @@
     width: calc(100% - 24px - 14px - 24px);
     text-align: start;
     margin: 0 12px;
+    color: var(--shortcut-text-color);
 }
 
 #shortcut-sidebar .new-wrapper {

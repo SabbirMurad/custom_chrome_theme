@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <title>New Tab</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/settings.css">
+    <link rel="stylesheet" href="assets/css/clock.css">
     <link rel="stylesheet" href="assets/css/shortcuts.css">
     <link rel="stylesheet" href="assets/css/bookmark.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
@@ -19,7 +22,7 @@
     <section id="foreground">
 
         <!-- Clock -->
-        <div id="clock-wrapper" class="glass-card">
+        <div id="clock-wrapper" class="glass-card horizontal-center">
             <div id="clock"></div>
             <div id="date"></div>
         </div>
@@ -36,9 +39,9 @@
         </div>
 
         <!-- Settings -->
-        <div class="settings-container glass-card">
+        <div class="settings-container glass-card" id="settings-btn">
             <img src="assets/icon/setting.svg" alt="settings">
-            <input id="videoInput" type="file" accept=".mp4">
+            <!-- <input id="videoInput" type="file" accept=".mp4"> -->
         </div>
 
         <!-- Sidebar Overlay -->
@@ -52,6 +55,53 @@
                 <h2>Added Shortcuts</h2>
                 <div class="shortcuts-wrapper">
 
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Sidebar Overlay -->
+        <div id="settings-sidebar-overlay" class="settings-sidebar-overlay hidden">
+            <div id="settings-sidebar" class="sidebar glass-card">
+                <h1>Clock</h1>
+                <div id="clock-settings-wrapper" class="item-wrapper" item-name="clock">
+                    <div class="item">
+                        <span>Text Color</span>
+                        <input type="color">
+                    </div>
+                    <div class="item position">
+                        <span>Position</span>
+                        <div class="horizontal-clock-position-wrapper">
+                            <input type="radio" name="horizontal-clock-position" value="left" checked> Left
+                            <input type="radio" name="horizontal-clock-position" value="horizontal-center"> Center
+                            <input type="radio" name="horizontal-clock-position" value="right"> Right
+                        </div>
+                        <div class="vertical-clock-position-wrapper">
+                            <input type="radio" name="vertical-clock-position" value="top" checked> Top
+                            <input type="radio" name="vertical-clock-position" value="vertical-center"> Center
+                            <input type="radio" name="vertical-clock-position" value="bottom"> Bottom
+                        </div>
+                    </div>
+                </div>
+                <h1>Bookmark</h1>
+                <div id="bookmark-settings-wrapper" class=" item-wrapper" item-name="bookmark">
+                    <div class="item">
+                        <span>Text Color</span>
+                        <input type="color">
+                    </div>
+                </div>
+                <h1>Shortcut</h1>
+                <div id="shortcut-settings-wrapper" class=" item-wrapper" item-name="shortcut">
+                    <div class="item">
+                        <span>Text Color</span>
+                        <input type="color">
+                    </div>
+                </div>
+                <h1>Google</h1>
+                <div id="google-settings-wrapper" class=" item-wrapper" item-name="google">
+                    <div class="item">
+                        <span>Text Color</span>
+                        <input type="color">
+                    </div>
                 </div>
             </div>
         </div>
@@ -91,9 +141,14 @@
                         alt="Google">
                     <span>Firebase</span>
                 </a>
+                <a class="item" href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
+                    <img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_email_x32.png" alt="Google">
+                    <span>Gmail</span>
+                </a>
             </div>
         </div>
     </section>
+    <script src="assets/js/settings.js"></script>
     <script src="assets/js/clock.js"></script>
     <script src="assets/js/bookmark.js"></script>
     <script src="assets/js/shortcuts.js"></script>
