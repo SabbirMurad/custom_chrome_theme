@@ -46,7 +46,7 @@ for (let colorPicker of textColorPickers) {
 // Position
 const positionWrapper = document.querySelector('#settings-sidebar .item-wrapper .item.position');
 
-const positionRadios = positionWrapper.querySelectorAll('input[type="radio"]');
+const positionIcons = positionWrapper.querySelectorAll('.icon');
 
 const clockWrapper = document.getElementById('clock-wrapper');
 
@@ -70,9 +70,9 @@ let inputDelayTimer;
     });
 })
 
-positionRadios.forEach(radio => {
-    radio.addEventListener('change', (e) => {
-        let value = e.target.value;
+positionIcons.forEach(icon => {
+    icon.addEventListener('click', (e) => {
+        let value = e.currentTarget.getAttribute('data-value');
 
         if (value === 'left') {
             clockWrapper.style.left = '0';

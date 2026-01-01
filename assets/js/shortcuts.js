@@ -37,7 +37,7 @@ async function loadShortcuts() {
 
     shortcutsWrapper.innerHTML = `
         <div class="item glass-card add-more">
-            <img src="assets/icon/edit.png" alt="Add">
+            <img src="assets/icon/edit.svg" alt="Add">
         </div>
     `;
 

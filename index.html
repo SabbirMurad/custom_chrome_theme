@@ -31,7 +31,7 @@
         <!-- Shortcuts -->
         <div id="shortcuts-wrapper">
             <div class="item glass-card add-more">
-                <img src="assets/icon/edit.png" alt="Add">
+                <img src="assets/icon/edit.svg" alt="Add">
             </div>
         </div>
         <div id="search-wrapper" class="glass-card">
@@ -65,10 +65,10 @@
                 <h1>Background</h1>
                 <div id="background-settings-wrapper" class="item-wrapper">
                     <div class="available-videos">
-                        <img src="assets/video/confused-frieren.mp4" alt="">
+
                     </div>
                     <div class="video-selector">
-                        <img src="assets/icon/setting.svg" alt="settings">
+                        <img src="assets/icon/video-pick.svg" alt="video-pick">
                         <input id="videoInput" type="file" accept=".mp4">
                     </div>
                 </div>
@@ -81,30 +81,36 @@
                     <div class="item position">
                         <span>Position</span>
                         <div class="horizontal-clock-position-wrapper position-option-wrapper">
-                            <input type="radio" name="horizontal-clock-position" value="left">
-                            <span>Left</span>
+                            <div class="icon" data-value="left">
+                                <img src="/assets/icon/align-left.svg" alt="">
+                            </div>
                             <input type="number" side-type="left" disabled>
                             <span>Px</span>
                             <div class="gap"></div>
-                            <input type="radio" name="horizontal-clock-position" value="horizontal-center">
-                            <span>Center</span>
+                            <div class="icon" data-value="horizontal-center">
+                                <img src="/assets/icon/align-center-horizontal.svg" alt="">
+                            </div>
                             <div class="gap"></div>
-                            <input type="radio" name="horizontal-clock-position" value="right">
-                            <span>Right</span>
+                            <div class="icon" data-value="right">
+                                <img src="/assets/icon/align-right.svg" alt="">
+                            </div>
                             <input type="number" side-type="right" disabled>
                             <span>Px</span>
                         </div>
                         <div class="vertical-clock-position-wrapper position-option-wrapper">
-                            <input type="radio" name="vertical-clock-position" value="top">
-                            <span>Top</span>
+                            <div class="icon" data-value="top">
+                                <img src="/assets/icon/align-top.svg" alt="">
+                            </div>
                             <input type="number" side-type="top" disabled>
                             <span>Px</span>
                             <div class="gap"></div>
-                            <input type="radio" name="vertical-clock-position" value="vertical-center">
-                            <span>Center</span>
+                            <div class="icon" data-value="vertical-center">
+                                <img src="/assets/icon/align-center-vertical.svg" alt="">
+                            </div>
                             <div class="gap"></div>
-                            <input type="radio" name="vertical-clock-position" value="bottom">
-                            <span>Bottom</span>
+                            <div class="icon" data-value="bottom">
+                                <img src="/assets/icon/align-bottom.svg" alt="">
+                            </div>
                             <input type="number" side-type="bottom" disabled>
                             <span>Px</span>
                         </div>
@@ -147,6 +153,7 @@
             </div>
         </div>
     </section>
+    <script src="assets/js/utils.js"></script>
     <script src="assets/js/settings.js"></script>
     <script src="assets/js/clock.js"></script>
     <script src="assets/js/bookmark.js"></script>

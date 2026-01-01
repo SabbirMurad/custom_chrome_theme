@@ -53,7 +53,7 @@ async function setBackgroundVideo() {
         videoElement.src = URL.createObjectURL(storedFile);
     } else {
         // Default video if none is in the DB
-        videoElement.src = "assets/video/confused-frieren.mp4";
+        videoElement.src = "assets/video/hornet-waterfall.mp4";
     }
 }
 
@@ -70,3 +70,26 @@ videoInput.addEventListener("change", async (event) => {
 
 // Load video on page load
 setBackgroundVideo();
+
+const preset_backgrounds = ['Confused Frieren', 'Hornet Waterfall', 'Japanese Phonk'];
+
+async function loadPresetVideo() {
+    const videoPresetWrapper = document.querySelector('#settings-sidebar .available-videos');
+
+    for (let i = 0; i < preset_backgrounds.length; i++) {
+        const videoPresetItem = document.createElement('div');
+        videoPresetItem.classList.add('item');
+        videoPresetItem.innerHTML = `
+            <div class="bg-wrapper">
+                <img class="background" src="assets/video/${toDashCase(preset_backgrounds[i])}.png" alt="">
+                <div class="overlay"></div>
+                <img class="check" src="assets/icon/check-circle.svg" alt="">
+            </div>
+            <p>${preset_backgrounds[i]}</p>
+        `;
+
+        videoPresetWrapper.appendChild(videoPresetItem);
+    }
+}
+
+loadPresetVideo();
