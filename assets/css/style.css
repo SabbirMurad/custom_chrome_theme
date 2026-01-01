@@ -74,13 +74,12 @@ video {
 }
 
 #blur-bg {
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(6px);
 }
 

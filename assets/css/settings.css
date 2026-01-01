@@ -155,9 +155,12 @@
     opacity: 1;
 }
 
-
-
 #settings-sidebar .available-videos .item  p {
   font-size: 14px;
-  font-weight: 500;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 184px;
+    overflow: hidden;
+    text-align: start;
 }

@@ -1,95 +1,31 @@
-const DB_NAME = "themeDB";
-const STORE_NAME = "videos";
-const VIDEO_KEY = "backgroundVideo";
+const blurSlider = document.getElementById("bg-blur-slider");
+const bgOverlay = document.getElementById("blur-bg");
+const shadowSlider = document.getElementById("bg-shadow-slider");
 
-// Open DB
-function openDB() {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open(DB_NAME, 1);
-
-        request.onupgradeneeded = () => {
-            const db = request.result;
-            if (!db.objectStoreNames.contains(STORE_NAME)) {
-                db.createObjectStore(STORE_NAME);
-            }
-        };
-
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-    });
-}
-
-// Save video file in DB
-async function saveVideoToDB(file) {
-    const db = await openDB();
-
-    return new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_NAME, "readwrite");
-        tx.objectStore(STORE_NAME).put(file, VIDEO_KEY);
-        tx.oncomplete = resolve;
-        tx.onerror = reject;
-    });
-}
-
-// Load video file from DB
-async function loadVideoFromDB() {
-    const db = await openDB();
-
-    return new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_NAME, "readonly");
-        const request = tx.objectStore(STORE_NAME).get(VIDEO_KEY);
-
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = reject;
-    });
-}
-
-// Set video source (from file or default)
-async function setBackgroundVideo() {
-    const videoElement = document.getElementById("bg-video");
-    const storedFile = await loadVideoFromDB();
-
-    if (storedFile) {
-        videoElement.src = URL.createObjectURL(storedFile);
-    } else {
-        // Default video if none is in the DB
-        videoElement.src = "assets/video/hornet-waterfall.mp4";
-    }
-}
-
-// Listen for file selection
-const videoInput = document.querySelector("#settings-sidebar .video-selector #videoInput")
-
-videoInput.addEventListener("change", async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    await saveVideoToDB(file);
-    setBackgroundVideo(); // instantly apply
+blurSlider.addEventListener("input", () => {
+    bgOverlay.style.backdropFilter = `blur(${blurSlider.value}px)`;
+    localStorage.setItem('bg-blur', blurSlider.value);
 });
 
-// Load video on page load
-setBackgroundVideo();
 
-const preset_backgrounds = ['Confused Frieren', 'Hornet Waterfall', 'Japanese Phonk'];
+shadowSlider.addEventListener("input", () => {
+    bgOverlay.style.background = `rgba(0,0,0,${shadowSlider.value / 100})`;
+    localStorage.setItem('bg-shadow', shadowSlider.value);
+});
 
-async function loadPresetVideo() {
-    const videoPresetWrapper = document.querySelector('#settings-sidebar .available-videos');
+function loadBgProperties() {
+    let blur = localStorage.getItem('bg-blur');
+    let shadow = localStorage.getItem('bg-shadow');
 
-    for (let i = 0; i < preset_backgrounds.length; i++) {
-        const videoPresetItem = document.createElement('div');
-        videoPresetItem.classList.add('item');
-        videoPresetItem.innerHTML = `
-            <div class="bg-wrapper">
-                <img class="background" src="assets/video/${toDashCase(preset_backgrounds[i])}.png" alt="">
-                <div class="overlay"></div>
-                <img class="check" src="assets/icon/check-circle.svg" alt="">
-            </div>
-            <p>${preset_backgrounds[i]}</p>
-        `;
+    if (blur) {
+        bgOverlay.style.backdropFilter = `blur(${blur}px)`;
+        blurSlider.value = blur;
+    }
 
-        videoPresetWrapper.appendChild(videoPresetItem);
+    if (shadow) {
+        bgOverlay.style.background = `rgba(0,0,0,${shadow / 100})`;
+        shadowSlider.value = shadow;
     }
 }
 
-loadPresetVideo();
+loadBgProperties();
