@@ -26,6 +26,7 @@
     transition: transform 0.3s ease;
     border-radius: 0px;
     align-items: flex-start;
+    overflow-y: scroll;
 }
 
 /* Sidebar visible */
@@ -96,19 +97,19 @@
 
 #settings-sidebar .available-videos {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 #settings-sidebar .available-videos .item {
-  width: 184px;
+  width: 178px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 #settings-sidebar .available-videos .item .bg-wrapper {
-  width: 184px;
+  width: 100%;
   height: 104px;
   border-radius: 8px;
   cursor: pointer;
@@ -116,7 +117,7 @@
 }
 
 #settings-sidebar .available-videos .item .bg-wrapper .background {
-  width: 184px;
+  width: 100%;
   height: 104px;
   border-radius: 8px;
   position: absolute;
@@ -126,7 +127,7 @@
 }
 
 #settings-sidebar .available-videos .item .bg-wrapper .overlay {
-  width: 184px;
+  width: 100%;
   height: 104px;
   border-radius: 8px;
   position: absolute;
@@ -156,11 +157,12 @@
 }
 
 #settings-sidebar .available-videos .item  p {
-  font-size: 14px;
+    font-size: 14px;
     font-weight: 500;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 184px;
+    width: 100%;
     overflow: hidden;
     text-align: start;
+    margin: 12px 0 0 0;
 }
