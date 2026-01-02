@@ -48,7 +48,7 @@ const positionWrapper = document.querySelector('#settings-sidebar .item-wrapper 
 
 const positionIcons = positionWrapper.querySelectorAll('.icon');
 
-const clockWrapper = document.getElementById('clock-wrapper');
+const clockPositionWrapper = document.getElementById('clock-position-wrapper');
 
 const leftTextInput = positionWrapper.querySelector('input[side-type="left"]');
 const rightTextInput = positionWrapper.querySelector('input[side-type="right"]');
@@ -65,7 +65,7 @@ let inputDelayTimer;
         clearTimeout(inputDelayTimer);
 
         inputDelayTimer = setTimeout(() => {
-            clockWrapper.style.setProperty(side, val + 'px');
+            clockPositionWrapper.style.setProperty(side, val + 'px');
         }, 500);
     });
 })
@@ -75,49 +75,49 @@ positionIcons.forEach(icon => {
         let value = e.currentTarget.getAttribute('data-value');
 
         if (value === 'left') {
-            clockWrapper.style.left = '0';
-            clockWrapper.style.right = 'unset';
-            clockWrapper.classList.remove('horizontal-center');
+            clockPositionWrapper.style.left = '0';
+            clockPositionWrapper.style.right = 'unset';
+            clockPositionWrapper.classList.remove('horizontal-center');
 
             leftTextInput.removeAttribute('disabled');
             rightTextInput.setAttribute('disabled', true);
         }
         else if (value === 'right') {
-            clockWrapper.style.right = '0';
-            clockWrapper.style.left = 'unset';
-            clockWrapper.classList.remove('horizontal-center');
+            clockPositionWrapper.style.right = '0';
+            clockPositionWrapper.style.left = 'unset';
+            clockPositionWrapper.classList.remove('horizontal-center');
 
             rightTextInput.removeAttribute('disabled');
             leftTextInput.setAttribute('disabled', true);
         }
         else if (value === 'horizontal-center') {
-            clockWrapper.style.left = 'unset';
-            clockWrapper.style.right = 'unset';
-            clockWrapper.classList.add('horizontal-center');
+            clockPositionWrapper.style.left = 'unset';
+            clockPositionWrapper.style.right = 'unset';
+            clockPositionWrapper.classList.add('horizontal-center');
 
             leftTextInput.setAttribute('disabled', true);
             rightTextInput.setAttribute('disabled', true);
         }
         else if (value === 'top') {
-            clockWrapper.style.top = '0';
-            clockWrapper.style.bottom = 'unset';
-            clockWrapper.classList.remove('vertical-center');
+            clockPositionWrapper.style.top = '0';
+            clockPositionWrapper.style.bottom = 'unset';
+            clockPositionWrapper.classList.remove('vertical-center');
 
             topTextInput.removeAttribute('disabled');
             bottomTextInput.setAttribute('disabled', true);
         }
         else if (value === 'bottom') {
-            clockWrapper.style.bottom = '0';
-            clockWrapper.style.top = 'unset';
-            clockWrapper.classList.remove('vertical-center');
+            clockPositionWrapper.style.bottom = '0';
+            clockPositionWrapper.style.top = 'unset';
+            clockPositionWrapper.classList.remove('vertical-center');
 
             bottomTextInput.removeAttribute('disabled');
             topTextInput.setAttribute('disabled', true);
         }
         else if (value === 'vertical-center') {
-            clockWrapper.style.top = 'unset';
-            clockWrapper.style.bottom = 'unset';
-            clockWrapper.classList.add('vertical-center');
+            clockPositionWrapper.style.top = 'unset';
+            clockPositionWrapper.style.bottom = 'unset';
+            clockPositionWrapper.classList.add('vertical-center');
 
             topTextInput.setAttribute('disabled', true);
             bottomTextInput.setAttribute('disabled', true);
@@ -125,22 +125,42 @@ positionIcons.forEach(icon => {
     });
 });
 
-// let savedTextColor = localStorage.getItem('text-color');
-// console.log(savedTextColor);
-// if (savedTextColor) {
-//     document.querySelector('body').style.setProperty('--text-color', savedTextColor);
-// }
+// Clock style changer
+const clockStyleWrapper = document.querySelector('#clock-settings-wrapper .clock-style-wrapper');
+const clockStyles = clockStyleWrapper.querySelectorAll('img');
 
-// textColorPicker.value = savedTextColor || "#FFFFFF";
+clockStyles.forEach(style => {
+    style.addEventListener('click', (e) => {
+        let clockName = style.getAttribute('clock-name');
 
-// let textInputTimer;
+        let allClocks = document.querySelectorAll('#clock-position-wrapper .clock-item');
 
-// textColorPicker.addEventListener('input', () => {
-//     console.log(textColorPicker.value);
-//     document.querySelector('body').style.setProperty('--text-color', textColorPicker.value);
+        localStorage.setItem('clock-style', clockName);
 
-//     clearTimeout(textInputTimer);
-//     textInputTimer = setTimeout(() => {
-//         localStorage.setItem('text-color', textColorPicker.value);
-//     }, 1000);
-// });
+        allClocks.forEach(clock => {
+            if (clock.classList.contains(clockName)) {
+                clock.style.display = 'flex';
+            }
+            else {
+                clock.style.display = 'none';
+            }
+        })
+    });
+})
+
+function loadSavedClockStyle() {
+    let clockStyle = localStorage.getItem('clock-style');
+    if (clockStyle) {
+        let allClocks = document.querySelectorAll('#clock-position-wrapper .clock-item');
+        allClocks.forEach(clock => {
+            if (clock.classList.contains(clockStyle)) {
+                clock.style.display = 'flex';
+            }
+            else {
+                clock.style.display = 'none';
+            }
+        })
+    }
+}
+
+loadSavedClockStyle();

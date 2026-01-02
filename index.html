@@ -13,7 +13,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
         rel="stylesheet">
 </head>
 
@@ -23,9 +24,33 @@
     <section id="foreground">
 
         <!-- Clock -->
-        <div id="clock-wrapper" class="glass-card horizontal-center">
-            <div id="clock"></div>
-            <div id="date"></div>
+        <div id="clock-position-wrapper" class="horizontal-center">
+            <div id="clock-wrapper" class="glass-card clock-item clock-v1">
+                <div id="clock"></div>
+                <div id="date"></div>
+            </div>
+
+            <div id="analog-clock-wrapper" class=" clock-item clock-v2">
+                <div class="clock">
+                    <!-- Numbers -->
+                    <div class="number n12">12</div>
+                    <div class="number n3">3</div>
+                    <div class="number n6">6</div>
+                    <div class="number n9">9</div>
+
+                    <div class="hand hour" id="hour"></div>
+                    <div class="hand minute" id="minute"></div>
+                    <div class="hand second" id="second"></div>
+                    <div class="center-dot"></div>
+                </div>
+            </div>
+
+            <div id="digital-clock-v2-wrapper" class=" clock-item clock-v3">
+                <div id="glow-clock">
+                    <p class="date">2026-01-02 FRI</p>
+                    <p class="time">15:17:53</p>
+                </div>
+            </div>
         </div>
 
         <!-- Shortcuts -->
@@ -78,6 +103,14 @@
                 </div>
                 <h1>Clock</h1>
                 <div id="clock-settings-wrapper" class="item-wrapper" item-name="clock">
+                    <div class="item">
+                        <p>Style</p>
+                        <div class="clock-style-wrapper">
+                            <img src="/assets/image/clock_option/digital_v1.png" alt="" clock-name="clock-v1">
+                            <img src="/assets/image/clock_option/analog_v1.png" alt="" clock-name="clock-v2">
+                            <img src="/assets/image/clock_option/digital_v2.png" alt="" clock-name="clock-v3">
+                        </div>
+                    </div>
                     <div class="item">
                         <span>Text Color</span>
                         <input type="color">
