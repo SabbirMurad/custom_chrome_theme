@@ -1,0 +1,36 @@
+#search-wrapper {
+  position: absolute;
+  top: 500px;
+  right: 50%;
+  padding: 0px 12px;
+  display: flex;
+  width: 684px;
+  height: 40px;
+  border-radius: 6px;
+  align-items: center;
+  transform: translateX(50%);
+  /* display: none; */
+}
+
+#search-wrapper img {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+#search-wrapper input {
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+}
+
+#search-wrapper input::placeholder {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: Archivo, Arial, sans-serif;
+}

@@ -185,21 +185,35 @@ sortableList.addEventListener("dragend", async () => {
 // ---------------------------
 // Add new shortcut
 // ---------------------------
-const addShortcutBtn = document.querySelector('#shortcut-sidebar-overlay #add-shortcut-btn');
+const urlInput = document.querySelector('#shortcut-sidebar-overlay #shortcut-url-input');
 
-addShortcutBtn.addEventListener('click', async () => {
-    const urlInput = document.querySelector('#shortcut-sidebar-overlay #shortcut-url');
-    const url = urlInput.value.trim();
+urlInput.addEventListener('keypress', async (e) => {
+    const url = e.target.value.trim();
+    if (e.key === "Enter" && url) {
+        let { shortcuts } = await chrome.storage.sync.get("shortcuts");
+        if (!shortcuts) shortcuts = [];
 
-    if (!url) return;
+        if (!shortcuts.includes(url)) shortcuts.push(url);
 
-    let { shortcuts } = await chrome.storage.sync.get("shortcuts");
-    if (!shortcuts) shortcuts = [];
+        await chrome.storage.sync.set({ shortcuts });
 
-    if (!shortcuts.includes(url)) shortcuts.push(url);
+        loadShortcuts();
+        urlInput.value = '';
+    }
+})
 
-    await chrome.storage.sync.set({ shortcuts });
+// addShortcutBtn.addEventListener('click', async () => {
+//     const url = urlInput.value.trim();
 
-    loadShortcuts();
-    urlInput.value = '';
-});
+//     if (!url) return;
+
+//     let { shortcuts } = await chrome.storage.sync.get("shortcuts");
+//     if (!shortcuts) shortcuts = [];
+
+//     if (!shortcuts.includes(url)) shortcuts.push(url);
+
+//     await chrome.storage.sync.set({ shortcuts });
+
+//     loadShortcuts();
+//     urlInput.value = '';
+// });
