@@ -87,14 +87,21 @@
         <!-- Settings Sidebar Overlay -->
         <div id="settings-sidebar-overlay" class="settings-sidebar-overlay hidden">
             <div id="settings-sidebar" class="sidebar glass-card">
-                <h1>Background</h1>
-                <div id="background-settings-wrapper" class="item-wrapper">
+                <ul class="tabs">
+                    <li class="active" setting-btn="background">Background</li>
+                    <li setting-btn="clock">Clock</li>
+                    <li setting-btn="bookmark">Bookmark</li>
+                    <li setting-btn="shortcut">Shortcuts</li>
+                    <li setting-btn="search">Search</li>
+                    <li setting-btn="google">Google</li>
+                </ul>
+                <div id="background-settings-wrapper" class="item-wrapper" item-name="background">
                     <div class="available-videos">
 
                     </div>
                     <div class="video-selector">
                         <p>Upload Video</p>
-                        <img src="assets/icon/video-pick.svg" alt="video-pick">
+                        <img src="assets/icon/upload.svg" alt="video-pick">
                         <input id="videoInput" type="file" accept=".mp4">
                     </div>
                     <p>Blur</p>
@@ -109,7 +116,7 @@
                         <span class="range-slider__value">0</span>
                     </div>
                 </div>
-                <h1>Clock</h1>
+
                 <div id="clock-settings-wrapper" class="item-wrapper" item-name="clock">
                     <div class="item">
                         <p>Style</p>
@@ -120,11 +127,11 @@
                         </div>
                     </div>
                     <div class="item">
-                        <span>Text Color</span>
+                        <p>Text Color</p>
                         <input type="color">
                     </div>
                     <div class="item position">
-                        <span>Position</span>
+                        <p>Position</p>
                         <div class="horizontal-clock-position-wrapper position-option-wrapper">
                             <div class="icon" data-value="left">
                                 <img src="/assets/icon/align-left.svg" alt="">
@@ -161,21 +168,21 @@
                         </div>
                     </div>
                 </div>
-                <h1>Bookmark</h1>
+
                 <div id="bookmark-settings-wrapper" class=" item-wrapper" item-name="bookmark">
                     <div class="item">
                         <span>Text Color</span>
                         <input type="color">
                     </div>
                 </div>
-                <h1>Shortcut</h1>
+
                 <div id="shortcut-settings-wrapper" class=" item-wrapper" item-name="shortcut">
                     <div class="item">
                         <span>Text Color</span>
                         <input type="color">
                     </div>
                 </div>
-                <h1>Google</h1>
+
                 <div id="google-settings-wrapper" class=" item-wrapper" item-name="google">
                     <div class="item">
                         <span>Text Color</span>

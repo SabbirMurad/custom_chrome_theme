@@ -164,3 +164,32 @@ function loadSavedClockStyle() {
 }
 
 loadSavedClockStyle();
+
+const settingTabIcons = document.querySelectorAll('#settings-sidebar .tabs li');
+
+settingTabIcons.forEach(icon => {
+    icon.addEventListener('click', (e) => {
+        console.log('clicked');
+        let preSelectedTab = document.querySelector('#settings-sidebar .tabs li.active');
+
+        if (e.currentTarget === preSelectedTab) {
+            return;
+        }
+
+        preSelectedTab.classList.remove('active');
+        e.currentTarget.classList.add('active');
+
+        let tabName = e.currentTarget.getAttribute('setting-btn');
+        let allItems = document.querySelectorAll('#settings-sidebar .item-wrapper');
+
+
+        allItems.forEach(item => {
+            if (item.getAttribute('item-name') === tabName) {
+                item.style.display = 'flex';
+            }
+            else {
+                item.style.display = 'none';
+            }
+        });
+    });
+})

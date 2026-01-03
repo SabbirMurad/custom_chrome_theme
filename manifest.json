@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Clock New Tab",
+  "name": "New Tab",
   "version": "1.0",
   "description": "Shows a clock in the center of the new tab page.",
   "permissions": [

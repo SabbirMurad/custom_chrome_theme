@@ -1,35 +1,3 @@
-{/* <a class="item" href="" target="_blank">
-    <img src=""
-        alt="Google">
-    <span></span>
-</a>
-<a class="item" href="" target="_blank">
-    <img src=""
-        alt="Google">
-    <span></span>
-</a>
-<a class="item" href="" target="_blank">
-    <img src="" alt="Google">
-    <span></span>
-</a>
-<a class="item" href="" target="_blank">
-    <img src="" alt="Google">
-    <span></span>
-</a>
-<a class="item" href="" target="_blank">
-    <img src="" alt="Google">
-    <span></span>
-</a>
-<a class="item" href="" target="_blank">
-    <img src=""
-        alt="Google">
-    <span></span>
-</a>
-<a class="item" href="" target="_blank">
-    <img src="" alt="Google">
-    <span></span>
-</a> */}
-
 const googleItems = [
     {
         'image': 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_spreadsheet_x32.png',
@@ -62,7 +30,7 @@ const googleItems = [
         'url': 'https://console.firebase.google.com/u/0/'
     },
     {
-        'image': 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_email_x32.png',
+        'image': '/assets/image/google/gmail.png',
         'name': 'Gmail',
         'url': 'https://mail.google.com/mail/u/0/#inbox'
     },
