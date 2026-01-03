@@ -43,85 +43,90 @@ for (let colorPicker of textColorPickers) {
     });
 }
 
-// Position
-const positionWrapper = document.querySelector('#settings-sidebar .item-wrapper .item.position');
+const settingsItem = document.querySelectorAll('#settings-sidebar .item-wrapper');
 
-const positionIcons = positionWrapper.querySelectorAll('.icon');
+settingsItem.forEach((settingsItem) => {
+    const positionControlWrapper = settingsItem.querySelector('.item.position');
+    if (!positionControlWrapper) return;
 
-const clockPositionWrapper = document.getElementById('clock-position-wrapper');
+    const positionIcons = positionControlWrapper.querySelectorAll('.icon');
+    const leftTextInput = positionControlWrapper.querySelector('input[side-type="left"]');
+    const rightTextInput = positionControlWrapper.querySelector('input[side-type="right"]');
+    const topTextInput = positionControlWrapper.querySelector('input[side-type="top"]');
+    const bottomTextInput = positionControlWrapper.querySelector('input[side-type="bottom"]');
 
-const leftTextInput = positionWrapper.querySelector('input[side-type="left"]');
-const rightTextInput = positionWrapper.querySelector('input[side-type="right"]');
-const topTextInput = positionWrapper.querySelector('input[side-type="top"]');
-const bottomTextInput = positionWrapper.querySelector('input[side-type="bottom"]');
+    let inputDelayTimer;
 
-let inputDelayTimer;
+    let contentId = positionControlWrapper.getAttribute('content-id');
+    const actualContentWrapper = document.getElementById(contentId);
 
-[leftTextInput, rightTextInput, topTextInput, bottomTextInput].forEach(textInput => {
-    textInput.addEventListener('input', (e) => {
-        let side = textInput.getAttribute('side-type');
-        let val = textInput.value;
 
-        clearTimeout(inputDelayTimer);
+    [leftTextInput, rightTextInput, topTextInput, bottomTextInput].forEach(textInput => {
+        textInput.addEventListener('input', (e) => {
+            let side = textInput.getAttribute('side-type');
+            let val = textInput.value;
 
-        inputDelayTimer = setTimeout(() => {
-            clockPositionWrapper.style.setProperty(side, val + 'px');
-        }, 500);
-    });
-})
+            clearTimeout(inputDelayTimer);
 
-positionIcons.forEach(icon => {
-    icon.addEventListener('click', (e) => {
-        let value = e.currentTarget.getAttribute('data-value');
+            inputDelayTimer = setTimeout(() => {
+                actualContentWrapper.style.setProperty(side, val + 'px');
+            }, 500);
+        });
+    })
 
-        if (value === 'left') {
-            clockPositionWrapper.style.left = '0';
-            clockPositionWrapper.style.right = 'unset';
-            clockPositionWrapper.classList.remove('horizontal-center');
+    positionIcons.forEach(icon => {
+        icon.addEventListener('click', (e) => {
+            let value = e.currentTarget.getAttribute('data-value');
 
-            leftTextInput.removeAttribute('disabled');
-            rightTextInput.setAttribute('disabled', true);
-        }
-        else if (value === 'right') {
-            clockPositionWrapper.style.right = '0';
-            clockPositionWrapper.style.left = 'unset';
-            clockPositionWrapper.classList.remove('horizontal-center');
+            if (value === 'left') {
+                actualContentWrapper.style.left = '0';
+                actualContentWrapper.style.right = 'unset';
+                actualContentWrapper.classList.remove('horizontal-center');
 
-            rightTextInput.removeAttribute('disabled');
-            leftTextInput.setAttribute('disabled', true);
-        }
-        else if (value === 'horizontal-center') {
-            clockPositionWrapper.style.left = 'unset';
-            clockPositionWrapper.style.right = 'unset';
-            clockPositionWrapper.classList.add('horizontal-center');
+                leftTextInput.removeAttribute('disabled');
+                rightTextInput.setAttribute('disabled', true);
+            }
+            else if (value === 'right') {
+                actualContentWrapper.style.right = '0';
+                actualContentWrapper.style.left = 'unset';
+                actualContentWrapper.classList.remove('horizontal-center');
 
-            leftTextInput.setAttribute('disabled', true);
-            rightTextInput.setAttribute('disabled', true);
-        }
-        else if (value === 'top') {
-            clockPositionWrapper.style.top = '0';
-            clockPositionWrapper.style.bottom = 'unset';
-            clockPositionWrapper.classList.remove('vertical-center');
+                rightTextInput.removeAttribute('disabled');
+                leftTextInput.setAttribute('disabled', true);
+            }
+            else if (value === 'horizontal-center') {
+                actualContentWrapper.style.left = 'unset';
+                actualContentWrapper.style.right = 'unset';
+                actualContentWrapper.classList.add('horizontal-center');
 
-            topTextInput.removeAttribute('disabled');
-            bottomTextInput.setAttribute('disabled', true);
-        }
-        else if (value === 'bottom') {
-            clockPositionWrapper.style.bottom = '0';
-            clockPositionWrapper.style.top = 'unset';
-            clockPositionWrapper.classList.remove('vertical-center');
+                leftTextInput.setAttribute('disabled', true);
+                rightTextInput.setAttribute('disabled', true);
+            }
+            else if (value === 'top') {
+                actualContentWrapper.style.top = '0';
+                actualContentWrapper.style.bottom = 'unset';
+                actualContentWrapper.classList.remove('vertical-center');
 
-            bottomTextInput.removeAttribute('disabled');
-            topTextInput.setAttribute('disabled', true);
-        }
-        else if (value === 'vertical-center') {
-            clockPositionWrapper.style.top = 'unset';
-            clockPositionWrapper.style.bottom = 'unset';
-            clockPositionWrapper.classList.add('vertical-center');
+                topTextInput.removeAttribute('disabled');
+                bottomTextInput.setAttribute('disabled', true);
+            }
+            else if (value === 'bottom') {
+                actualContentWrapper.style.bottom = '0';
+                actualContentWrapper.style.top = 'unset';
+                actualContentWrapper.classList.remove('vertical-center');
 
-            topTextInput.setAttribute('disabled', true);
-            bottomTextInput.setAttribute('disabled', true);
-        }
+                bottomTextInput.removeAttribute('disabled');
+                topTextInput.setAttribute('disabled', true);
+            }
+            else if (value === 'vertical-center') {
+                actualContentWrapper.style.top = 'unset';
+                actualContentWrapper.style.bottom = 'unset';
+                actualContentWrapper.classList.add('vertical-center');
+
+                topTextInput.setAttribute('disabled', true);
+                bottomTextInput.setAttribute('disabled', true);
+            }
+        });
     });
 });
 
@@ -169,7 +174,6 @@ const settingTabIcons = document.querySelectorAll('#settings-sidebar .tabs li');
 
 settingTabIcons.forEach(icon => {
     icon.addEventListener('click', (e) => {
-        console.log('clicked');
         let preSelectedTab = document.querySelector('#settings-sidebar .tabs li.active');
 
         if (e.currentTarget === preSelectedTab) {
