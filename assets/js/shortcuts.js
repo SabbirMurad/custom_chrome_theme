@@ -193,7 +193,7 @@ urlInput.addEventListener('keypress', async (e) => {
         let { shortcuts } = await chrome.storage.sync.get("shortcuts");
         if (!shortcuts) shortcuts = [];
 
-        if (!shortcuts.includes(url)) shortcuts.push(url);
+        if (!shortcuts.includes(url)) shortcuts.push(addHttpToUrl(url));
 
         await chrome.storage.sync.set({ shortcuts });
 

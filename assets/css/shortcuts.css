@@ -34,6 +34,7 @@
 #shortcuts-wrapper .item img {
   width: 24px;
   height: 24px;
+  user-select: none;
 }
 
 /* Dark transparent overlay */
@@ -141,6 +142,7 @@
 #shortcut-sidebar .shortcuts-wrapper .item img {
     width: 24px;
     height: 24px;
+    user-select: none;
 }
 
 #shortcut-sidebar .shortcuts-wrapper .item .close {

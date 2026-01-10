@@ -151,7 +151,7 @@
     font-family: Orbitron;
     text-align: center;
     color: var(--clock-text-color);
-    text-shadow: 0 0 20px rgb(0 0 0), 0 0 20px rgba(10, 175, 230, 0);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(24, 24, 24, 0.2);
 	
     .time {
         letter-spacing: 0.05em;

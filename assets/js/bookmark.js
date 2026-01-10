@@ -42,7 +42,8 @@ function renderMainBookmark(nodes) {
 
     for (const node of nodes) {
         if (node.url) {
-            const item = document.createElement("div");
+            const item = document.createElement("a");
+            item.setAttribute("href", node.url);
             item.className = "bookmark-item";
             item.classList.add("glass-card");
             item.innerHTML = `
@@ -50,7 +51,6 @@ function renderMainBookmark(nodes) {
                 <span>${node.title || node.url}</span>
             `;
 
-            item.onclick = () => window.open(node.url, "_blank");
             container.appendChild(item);
         }
         else {
@@ -93,14 +93,14 @@ function renderBookmarkChildren(nodes) {
 
     for (const node of nodes) {
         if (node.url) {
-            const item = document.createElement("div");
+            const item = document.createElement("a");
+            item.setAttribute("href", node.url);
             item.className = "bookmark-item";
             item.innerHTML = `
                 <img src="${getFavicon(node.url)}" alt="${node.title || node.url}">
                 <span>${node.title || node.url}</span>
             `;
 
-            item.onclick = () => window.open(node.url, "_blank");
             container.appendChild(item);
         }
         else {
