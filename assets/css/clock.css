@@ -48,7 +48,6 @@
 	align-items: center;
 	background-color:  rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
-	background-image: url("/assets/image/analog_clock_bg.png");
 	background-position: center center;
 	background-size: cover;
 	border-radius: 50%;
@@ -135,6 +134,55 @@
 #analog-clock-wrapper .clock .n6  { top: 90%; left: 50%; }
 #analog-clock-wrapper .clock .n9  { top: 50%; left: 10%; }
 
+#analog-clock-wrapper .clock .mark {
+    position: absolute;
+    width: .2em;
+    height: 0.8em;
+    background: var(--clock-text-color);
+    border-radius: 2px;
+}
+
+#analog-clock-wrapper .clock .mark.m1 {
+    top: 12%;
+    right: 29%;
+    rotate: 33deg;
+}
+#analog-clock-wrapper .clock .mark.m2 {
+    top: 27%;
+    right: 14%;
+    rotate: 57deg;
+}
+#analog-clock-wrapper .clock .mark.m4 {
+    top: 67.5%;
+    right: 14%;
+    rotate: 122deg;
+}
+
+#analog-clock-wrapper .clock .mark.m5 {
+    top: 82%;
+    right: 29%;
+    rotate: 148deg;
+}
+#analog-clock-wrapper .clock .mark.m7 {
+    top: 83%;
+    right: 70%;
+    rotate: 32deg;
+}
+#analog-clock-wrapper .clock .mark.m8 {
+    top: 67.5%;
+    right: 84.5%;
+    rotate: 60deg;
+}
+#analog-clock-wrapper .clock .mark.m10 {
+    top: 26.5%;
+    right: 85%;
+    rotate: -60deg;
+}
+#analog-clock-wrapper .clock .mark.m11 {
+    top: 11%;
+    right: 70%;
+    rotate: -29deg;
+}
 
 /* Glowing clock */
 #digital-clock-v2-wrapper {
