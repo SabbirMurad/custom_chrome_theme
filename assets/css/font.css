@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'BloodVictimZombie';
+  src: url('/assets/font/blood_victim_zombie.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonsterChiller';
+  src: url('/assets/font/monster_chiller.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

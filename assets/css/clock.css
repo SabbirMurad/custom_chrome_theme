@@ -1,6 +1,6 @@
 #clock-position-wrapper {
   position: absolute;
-  top: 118px;
+  top: 548px;
 }
 
 #clock-wrapper {
@@ -157,7 +157,6 @@
     right: 14%;
     rotate: 122deg;
 }
-
 #analog-clock-wrapper .clock .mark.m5 {
     top: 82%;
     right: 29%;
@@ -197,6 +196,7 @@
 
 #digital-clock-v2-wrapper #glow-clock {
     font-family: Orbitron;
+    /* font-family: BloodVictimZombie; */
     text-align: center;
     color: var(--clock-text-color);
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(24, 24, 24, 0.2);

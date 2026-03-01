@@ -38,7 +38,8 @@ function updateClock() {
     glowClockDate.textContent = `${now.getDate() < 10 ? '0' + now.getDate() : now.getDate()} - ${now.getMonth() < 9 ? '0' + (now.getMonth() + 1) : now.getMonth() + 1} - ${now.getFullYear()} | ${daysShort[day]}`;
 
     let hour = h == 0 ? 12 : h > 12 ? h - 12 : h;
-    glowClockTime.textContent = `${hour < 10 ? '0' + hour : hour} : ${m} : ${now.getSeconds() < 10 ? '0' + now.getSeconds() : now.getSeconds()} ${h > 12 ? 'PM' : 'AM'}`;
+
+    glowClockTime.textContent = `${hour.toString().length == 1 ? `0${hour}` : hour} : ${m} : ${now.getSeconds() < 10 ? '0' + now.getSeconds() : now.getSeconds()} ${h > 12 ? 'PM' : 'AM'}`;
 }
 
 setInterval(updateClock, 1000);
