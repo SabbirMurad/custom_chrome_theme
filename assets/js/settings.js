@@ -61,6 +61,84 @@ settingsItem.forEach((settingsItem) => {
     const actualContentWrapper = document.getElementById(contentId);
 
 
+    function savePosition() {
+        let pos = {
+            horizontal: actualContentWrapper.classList.contains('horizontal-center') ? 'horizontal-center' : null,
+            vertical: actualContentWrapper.classList.contains('vertical-center') ? 'vertical-center' : null,
+            left: actualContentWrapper.style.left,
+            right: actualContentWrapper.style.right,
+            top: actualContentWrapper.style.top,
+            bottom: actualContentWrapper.style.bottom,
+        };
+
+        if (!pos.horizontal) {
+            pos.horizontal = pos.left !== 'unset' && pos.left !== '' ? 'left' : 'right';
+        }
+        if (!pos.vertical) {
+            pos.vertical = pos.top !== 'unset' && pos.top !== '' ? 'top' : 'bottom';
+        }
+
+        pos.leftVal = leftTextInput.value;
+        pos.rightVal = rightTextInput.value;
+        pos.topVal = topTextInput.value;
+        pos.bottomVal = bottomTextInput.value;
+
+        localStorage.setItem(contentId + '-position', JSON.stringify(pos));
+    }
+
+    function loadPosition() {
+        let saved = localStorage.getItem(contentId + '-position');
+        if (!saved) return;
+
+        let pos = JSON.parse(saved);
+
+        if (pos.horizontal === 'horizontal-center') {
+            actualContentWrapper.style.left = 'unset';
+            actualContentWrapper.style.right = 'unset';
+            actualContentWrapper.classList.add('horizontal-center');
+            leftTextInput.setAttribute('disabled', true);
+            rightTextInput.setAttribute('disabled', true);
+        } else if (pos.horizontal === 'left') {
+            actualContentWrapper.classList.remove('horizontal-center');
+            actualContentWrapper.style.right = 'unset';
+            actualContentWrapper.style.left = pos.left || '0';
+            leftTextInput.value = pos.leftVal || '';
+            leftTextInput.removeAttribute('disabled');
+            rightTextInput.setAttribute('disabled', true);
+        } else if (pos.horizontal === 'right') {
+            actualContentWrapper.classList.remove('horizontal-center');
+            actualContentWrapper.style.left = 'unset';
+            actualContentWrapper.style.right = pos.right || '0';
+            rightTextInput.value = pos.rightVal || '';
+            rightTextInput.removeAttribute('disabled');
+            leftTextInput.setAttribute('disabled', true);
+        }
+
+        if (pos.vertical === 'vertical-center') {
+            actualContentWrapper.style.top = 'unset';
+            actualContentWrapper.style.bottom = 'unset';
+            actualContentWrapper.classList.add('vertical-center');
+            topTextInput.setAttribute('disabled', true);
+            bottomTextInput.setAttribute('disabled', true);
+        } else if (pos.vertical === 'top') {
+            actualContentWrapper.classList.remove('vertical-center');
+            actualContentWrapper.style.bottom = 'unset';
+            actualContentWrapper.style.top = pos.top || '0';
+            topTextInput.value = pos.topVal || '';
+            topTextInput.removeAttribute('disabled');
+            bottomTextInput.setAttribute('disabled', true);
+        } else if (pos.vertical === 'bottom') {
+            actualContentWrapper.classList.remove('vertical-center');
+            actualContentWrapper.style.top = 'unset';
+            actualContentWrapper.style.bottom = pos.bottom || '0';
+            bottomTextInput.value = pos.bottomVal || '';
+            bottomTextInput.removeAttribute('disabled');
+            topTextInput.setAttribute('disabled', true);
+        }
+    }
+
+    loadPosition();
+
     [leftTextInput, rightTextInput, topTextInput, bottomTextInput].forEach(textInput => {
         textInput.addEventListener('input', (e) => {
             let side = textInput.getAttribute('side-type');
@@ -70,6 +148,7 @@ settingsItem.forEach((settingsItem) => {
 
             inputDelayTimer = setTimeout(() => {
                 actualContentWrapper.style.setProperty(side, val + 'px');
+                savePosition();
             }, 500);
         });
     })
@@ -126,6 +205,8 @@ settingsItem.forEach((settingsItem) => {
                 topTextInput.setAttribute('disabled', true);
                 bottomTextInput.setAttribute('disabled', true);
             }
+
+            savePosition();
         });
     });
 });
