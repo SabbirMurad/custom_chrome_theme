@@ -1,3 +1,39 @@
+function attachSmartHover(folder, childrenContainer, isTopLevel) {
+    folder.addEventListener('mouseenter', () => {
+        childrenContainer.style.visibility = 'hidden';
+        childrenContainer.style.top = '';
+        childrenContainer.style.bottom = '';
+        childrenContainer.style.left = '';
+        childrenContainer.style.right = '';
+        childrenContainer.classList.add('show');
+
+        const rect = childrenContainer.getBoundingClientRect();
+
+        // Vertical: flip upward if not enough room below
+        if (rect.bottom > window.innerHeight - 4) {
+            childrenContainer.style.top = 'unset';
+            childrenContainer.style.bottom = isTopLevel ? '100%' : '0';
+        }
+
+        // Horizontal: flip leftward if not enough room to the right
+        if (rect.right > window.innerWidth - 4) {
+            childrenContainer.style.left = 'unset';
+            // top-level: right-align with folder button; nested: open to the left with same gap
+            childrenContainer.style.right = isTopLevel ? '0' : 'calc(100% + 8px)';
+        }
+
+        childrenContainer.style.visibility = '';
+    });
+
+    folder.addEventListener('mouseleave', () => {
+        childrenContainer.classList.remove('show');
+        childrenContainer.style.top = '';
+        childrenContainer.style.bottom = '';
+        childrenContainer.style.left = '';
+        childrenContainer.style.right = '';
+    });
+}
+
 function processBookmarks(nodes) {
     let results = [];
 
@@ -78,6 +114,7 @@ function renderMainBookmark(nodes) {
 
             folder.appendChild(title);
             folder.appendChild(childrenContainer);
+            attachSmartHover(folder, childrenContainer, true);
 
             container.appendChild(folder);
         }
@@ -127,6 +164,7 @@ function renderBookmarkChildren(nodes) {
 
             folder.appendChild(title);
             folder.appendChild(childrenContainer);
+            attachSmartHover(folder, childrenContainer, false);
 
             container.appendChild(folder);
         }

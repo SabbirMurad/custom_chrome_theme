@@ -70,9 +70,10 @@
                 <img src="assets/icon/edit.svg" alt="Add">
             </div>
         </div>
-        <div id="search-wrapper" class="glass-card">
+        <div id="search-wrapper" class="glass-card horizontal-center">
             <img src="assets/icon/search.svg" alt="search">
-            <input type="text" placeholder="Search ..." name="search">
+            <input type="text" placeholder="Search ..." name="search" autocomplete="off">
+            <div id="search-history-dropdown"></div>
         </div>
 
         <!-- Settings -->
@@ -145,42 +146,45 @@
                     <div class="item">
                         <p>Text Color</p>
                         <input type="color">
+                        <input type="text" class="hex-input" placeholder="#FFFFFF" maxlength="7" spellcheck="false">
                     </div>
                     <div class="item position" content-id="clock-position-wrapper">
                         <p>Position</p>
-                        <div class="horizontal-clock-position-wrapper position-option-wrapper">
-                            <div class="icon" data-value="left">
-                                <img src="/assets/icon/align-left.svg" alt="">
+                        <div class="position-axis-row">
+                            <div class="align-btn-group">
+                                <div class="icon" data-value="left"><img src="/assets/icon/align-left.svg" alt=""></div>
+                                <div class="icon" data-value="horizontal-center"><img src="/assets/icon/align-center-horizontal.svg" alt=""></div>
+                                <div class="icon" data-value="right"><img src="/assets/icon/align-right.svg" alt=""></div>
                             </div>
-                            <input type="number" side-type="left" disabled>
-                            <span>Px</span>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="horizontal-center">
-                                <img src="/assets/icon/align-center-horizontal.svg" alt="">
+                            <div class="pos-inputs">
+                                <div class="pos-input-field">
+                                    <label>L</label>
+                                    <input type="number" side-type="left" disabled>
+                                </div>
+                                <div class="pos-input-field">
+                                    <label>R</label>
+                                    <input type="number" side-type="right" disabled>
+                                </div>
+                                <span class="px-unit">px</span>
                             </div>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="right">
-                                <img src="/assets/icon/align-right.svg" alt="">
-                            </div>
-                            <input type="number" side-type="right" disabled>
-                            <span>Px</span>
                         </div>
-                        <div class="vertical-clock-position-wrapper position-option-wrapper">
-                            <div class="icon" data-value="top">
-                                <img src="/assets/icon/align-top.svg" alt="">
+                        <div class="position-axis-row">
+                            <div class="align-btn-group">
+                                <div class="icon" data-value="top"><img src="/assets/icon/align-top.svg" alt=""></div>
+                                <div class="icon" data-value="vertical-center"><img src="/assets/icon/align-center-vertical.svg" alt=""></div>
+                                <div class="icon" data-value="bottom"><img src="/assets/icon/align-bottom.svg" alt=""></div>
                             </div>
-                            <input type="number" side-type="top" disabled>
-                            <span>Px</span>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="vertical-center">
-                                <img src="/assets/icon/align-center-vertical.svg" alt="">
+                            <div class="pos-inputs">
+                                <div class="pos-input-field">
+                                    <label>T</label>
+                                    <input type="number" side-type="top" disabled>
+                                </div>
+                                <div class="pos-input-field">
+                                    <label>B</label>
+                                    <input type="number" side-type="bottom" disabled>
+                                </div>
+                                <span class="px-unit">px</span>
                             </div>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="bottom">
-                                <img src="/assets/icon/align-bottom.svg" alt="">
-                            </div>
-                            <input type="number" side-type="bottom" disabled>
-                            <span>Px</span>
                         </div>
                     </div>
                 </div>
@@ -189,42 +193,45 @@
                     <div class="item">
                         <span>Text Color</span>
                         <input type="color">
+                        <input type="text" class="hex-input" placeholder="#FFFFFF" maxlength="7" spellcheck="false">
                     </div>
                     <div class="item position" content-id="bookmark-container">
                         <p>Position</p>
-                        <div class="horizontal-clock-position-wrapper position-option-wrapper">
-                            <div class="icon" data-value="left">
-                                <img src="/assets/icon/align-left.svg" alt="">
+                        <div class="position-axis-row">
+                            <div class="align-btn-group">
+                                <div class="icon" data-value="left"><img src="/assets/icon/align-left.svg" alt=""></div>
+                                <div class="icon" data-value="horizontal-center"><img src="/assets/icon/align-center-horizontal.svg" alt=""></div>
+                                <div class="icon" data-value="right"><img src="/assets/icon/align-right.svg" alt=""></div>
                             </div>
-                            <input type="number" side-type="left" disabled>
-                            <span>Px</span>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="horizontal-center">
-                                <img src="/assets/icon/align-center-horizontal.svg" alt="">
+                            <div class="pos-inputs">
+                                <div class="pos-input-field">
+                                    <label>L</label>
+                                    <input type="number" side-type="left" disabled>
+                                </div>
+                                <div class="pos-input-field">
+                                    <label>R</label>
+                                    <input type="number" side-type="right" disabled>
+                                </div>
+                                <span class="px-unit">px</span>
                             </div>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="right">
-                                <img src="/assets/icon/align-right.svg" alt="">
-                            </div>
-                            <input type="number" side-type="right" disabled>
-                            <span>Px</span>
                         </div>
-                        <div class="vertical-clock-position-wrapper position-option-wrapper">
-                            <div class="icon" data-value="top">
-                                <img src="/assets/icon/align-top.svg" alt="">
+                        <div class="position-axis-row">
+                            <div class="align-btn-group">
+                                <div class="icon" data-value="top"><img src="/assets/icon/align-top.svg" alt=""></div>
+                                <div class="icon" data-value="vertical-center"><img src="/assets/icon/align-center-vertical.svg" alt=""></div>
+                                <div class="icon" data-value="bottom"><img src="/assets/icon/align-bottom.svg" alt=""></div>
                             </div>
-                            <input type="number" side-type="top" disabled>
-                            <span>Px</span>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="vertical-center">
-                                <img src="/assets/icon/align-center-vertical.svg" alt="">
+                            <div class="pos-inputs">
+                                <div class="pos-input-field">
+                                    <label>T</label>
+                                    <input type="number" side-type="top" disabled>
+                                </div>
+                                <div class="pos-input-field">
+                                    <label>B</label>
+                                    <input type="number" side-type="bottom" disabled>
+                                </div>
+                                <span class="px-unit">px</span>
                             </div>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="bottom">
-                                <img src="/assets/icon/align-bottom.svg" alt="">
-                            </div>
-                            <input type="number" side-type="bottom" disabled>
-                            <span>Px</span>
                         </div>
                     </div>
                 </div>
@@ -233,42 +240,94 @@
                     <div class="item">
                         <span>Text Color</span>
                         <input type="color">
+                        <input type="text" class="hex-input" placeholder="#FFFFFF" maxlength="7" spellcheck="false">
                     </div>
                     <div class="item position" content-id="shortcuts-wrapper">
                         <p>Position</p>
-                        <div class="horizontal-clock-position-wrapper position-option-wrapper">
-                            <div class="icon" data-value="left">
-                                <img src="/assets/icon/align-left.svg" alt="">
+                        <div class="position-axis-row">
+                            <div class="align-btn-group">
+                                <div class="icon" data-value="left"><img src="/assets/icon/align-left.svg" alt=""></div>
+                                <div class="icon" data-value="horizontal-center"><img src="/assets/icon/align-center-horizontal.svg" alt=""></div>
+                                <div class="icon" data-value="right"><img src="/assets/icon/align-right.svg" alt=""></div>
                             </div>
-                            <input type="number" side-type="left" disabled>
-                            <span>Px</span>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="horizontal-center">
-                                <img src="/assets/icon/align-center-horizontal.svg" alt="">
+                            <div class="pos-inputs">
+                                <div class="pos-input-field">
+                                    <label>L</label>
+                                    <input type="number" side-type="left" disabled>
+                                </div>
+                                <div class="pos-input-field">
+                                    <label>R</label>
+                                    <input type="number" side-type="right" disabled>
+                                </div>
+                                <span class="px-unit">px</span>
                             </div>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="right">
-                                <img src="/assets/icon/align-right.svg" alt="">
-                            </div>
-                            <input type="number" side-type="right" disabled>
-                            <span>Px</span>
                         </div>
-                        <div class="vertical-clock-position-wrapper position-option-wrapper">
-                            <div class="icon" data-value="top">
-                                <img src="/assets/icon/align-top.svg" alt="">
+                        <div class="position-axis-row">
+                            <div class="align-btn-group">
+                                <div class="icon" data-value="top"><img src="/assets/icon/align-top.svg" alt=""></div>
+                                <div class="icon" data-value="vertical-center"><img src="/assets/icon/align-center-vertical.svg" alt=""></div>
+                                <div class="icon" data-value="bottom"><img src="/assets/icon/align-bottom.svg" alt=""></div>
                             </div>
-                            <input type="number" side-type="top" disabled>
-                            <span>Px</span>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="vertical-center">
-                                <img src="/assets/icon/align-center-vertical.svg" alt="">
+                            <div class="pos-inputs">
+                                <div class="pos-input-field">
+                                    <label>T</label>
+                                    <input type="number" side-type="top" disabled>
+                                </div>
+                                <div class="pos-input-field">
+                                    <label>B</label>
+                                    <input type="number" side-type="bottom" disabled>
+                                </div>
+                                <span class="px-unit">px</span>
                             </div>
-                            <div class="gap"></div>
-                            <div class="icon" data-value="bottom">
-                                <img src="/assets/icon/align-bottom.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="search-settings-wrapper" class=" item-wrapper" item-name="search">
+                    <div class="item">
+                        <span>Show Search Bar</span>
+                        <label class="switch">
+                            <input type="checkbox" id="search-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="item position" content-id="search-wrapper">
+                        <p>Position</p>
+                        <div class="position-axis-row">
+                            <div class="align-btn-group">
+                                <div class="icon" data-value="left"><img src="/assets/icon/align-left.svg" alt=""></div>
+                                <div class="icon" data-value="horizontal-center"><img src="/assets/icon/align-center-horizontal.svg" alt=""></div>
+                                <div class="icon" data-value="right"><img src="/assets/icon/align-right.svg" alt=""></div>
                             </div>
-                            <input type="number" side-type="bottom" disabled>
-                            <span>Px</span>
+                            <div class="pos-inputs">
+                                <div class="pos-input-field">
+                                    <label>L</label>
+                                    <input type="number" side-type="left" disabled>
+                                </div>
+                                <div class="pos-input-field">
+                                    <label>R</label>
+                                    <input type="number" side-type="right" disabled>
+                                </div>
+                                <span class="px-unit">px</span>
+                            </div>
+                        </div>
+                        <div class="position-axis-row">
+                            <div class="align-btn-group">
+                                <div class="icon" data-value="top"><img src="/assets/icon/align-top.svg" alt=""></div>
+                                <div class="icon" data-value="vertical-center"><img src="/assets/icon/align-center-vertical.svg" alt=""></div>
+                                <div class="icon" data-value="bottom"><img src="/assets/icon/align-bottom.svg" alt=""></div>
+                            </div>
+                            <div class="pos-inputs">
+                                <div class="pos-input-field">
+                                    <label>T</label>
+                                    <input type="number" side-type="top" disabled>
+                                </div>
+                                <div class="pos-input-field">
+                                    <label>B</label>
+                                    <input type="number" side-type="bottom" disabled>
+                                </div>
+                                <span class="px-unit">px</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -277,6 +336,7 @@
                     <div class="item">
                         <span>Text Color</span>
                         <input type="color">
+                        <input type="text" class="hex-input" placeholder="#FFFFFF" maxlength="7" spellcheck="false">
                     </div>
                 </div>
             </div>

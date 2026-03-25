@@ -10,19 +10,6 @@ function getDomain(url) {
     }
 }
 
-// ---------------------------
-// Helper: Favicon
-// ---------------------------
-function getFavicon(domain) {
-    try {
-        const url = new URL(domain.includes("://") ? domain : "https://" + domain);
-        // return `${url.origin}/favicon.ico`;
-        return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-        // return `chrome://favicon2/?size=24&scaleFactor=1x&showFallbackMonogram=&pageUrl=https://${url.origin}/`;
-    } catch {
-        return 'assets/web.svg';
-    }
-}
 
 // ---------------------------
 // Load shortcuts (async)

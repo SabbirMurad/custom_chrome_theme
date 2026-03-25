@@ -9,6 +9,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  z-index: 10;
 }
 
 #bookmark-container > img {
@@ -94,7 +95,7 @@
   right: 0px;
 }
 
-#bookmark-container .container .bookmark-folder:hover > .bookmark-children {
+#bookmark-container .container .bookmark-folder > .bookmark-children.show {
   display: block;
 }
 

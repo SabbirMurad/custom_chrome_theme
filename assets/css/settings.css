@@ -119,30 +119,179 @@
     margin-bottom: 18px;
 }
 
-#settings-sidebar .item-wrapper .item.position .position-option-wrapper {
+/* Position Controls */
+.position-axis-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 12px 0;
+    gap: 10px;
+    margin: 5px 0;
 }
 
-#settings-sidebar .item-wrapper .item.position .position-option-wrapper .gap {
-    width: 24px;
-}
-
-#settings-sidebar .item-wrapper .item.position .position-option-wrapper input[type="number"] {
-    height: 36px;
-    width: 56px;
-    outline: none;
-    border: none;
+.align-btn-group {
+    display: flex;
+    background: rgba(255,255,255,0.06);
     border-radius: 8px;
-    margin: 0 4px 0 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
 }
 
-#settings-sidebar .item-wrapper .item.position .position-option-wrapper img{
-    width: 24px;
-    height: 24px;
+.align-btn-group .icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    transition: background 0.18s ease;
+    border-right: 1px solid rgba(255,255,255,0.07);
+}
+
+.align-btn-group .icon:last-child {
+    border-right: none;
+}
+
+.align-btn-group .icon:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.align-btn-group .icon.active {
+    background: #1abc9c;
+}
+
+.align-btn-group .icon img {
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
+}
+
+.pos-inputs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pos-input-field {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 7px;
+    padding: 0 9px;
+    height: 36px;
+    transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.pos-input-field:has(input:not([disabled])) {
+    background: rgba(26,188,156,0.1);
+    border-color: rgba(26,188,156,0.45);
+}
+
+.pos-input-field label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: default;
+    user-select: none;
+}
+
+.pos-input-field:has(input:not([disabled])) label {
+    color: #1abc9c;
+}
+
+.pos-input-field input[type="number"] {
+    width: 44px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.pos-input-field input[type="number"]::-webkit-outer-spin-button,
+.pos-input-field input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.pos-input-field input[type="number"][disabled] {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.px-unit {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+}
+
+/* Color Picker */
+input[type="color"] {
+    -webkit-appearance: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    border: 2px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+    padding: 3px;
+    background: transparent;
+    transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+input[type="color"]:hover {
+    border-color: rgba(255,255,255,0.4);
+    transform: scale(1.06);
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 5px;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 5px;
+}
+
+#settings-sidebar .item-wrapper .item:has(input[type="color"]) {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+#settings-sidebar .item-wrapper .item:has(input[type="color"]) > p,
+#settings-sidebar .item-wrapper .item:has(input[type="color"]) > span {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+}
+
+.hex-input {
+    width: 88px;
+    height: 38px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: white;
+    font-size: 13px;
+    font-family: monospace;
+    letter-spacing: 0.04em;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.hex-input:focus {
+    border-color: rgba(26,188,156,0.5);
+    background: rgba(26,188,156,0.08);
+}
+
+.hex-input.invalid {
+    border-color: rgba(255,80,80,0.5);
+    background: rgba(255,80,80,0.06);
 }
 
 #settings-sidebar .video-selector {

@@ -17,30 +17,85 @@ settingsOverlay.onclick = e => {
 };
 
 // ---------------------------
+// Escape key closes any open sidebar
+// ---------------------------
+document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+
+    if (settingsOverlay.classList.contains('show')) {
+        settingsOverlay.classList.remove('show');
+        setTimeout(() => settingsOverlay.classList.add('hidden'), 250);
+    }
+
+    const shortcutOverlay = document.getElementById('shortcut-sidebar-overlay');
+    if (shortcutOverlay.classList.contains('show')) {
+        shortcutOverlay.classList.remove('show');
+        setTimeout(() => shortcutOverlay.classList.add('hidden'), 250);
+    }
+});
+
+// ---------------------------
 // Text Colors
 // ---------------------------
+function normalizeHex(val) {
+    val = val.trim().replace(/^#/, '');
+    if (val.length === 3) val = val[0] + val[0] + val[1] + val[1] + val[2] + val[2];
+    return /^[0-9a-fA-F]{6}$/.test(val) ? '#' + val.toLowerCase() : null;
+}
+
 let textColorPickers = document.querySelectorAll('#settings-sidebar-overlay .item-wrapper input[type="color"]');
 
 for (let colorPicker of textColorPickers) {
     let itemName = colorPicker.parentElement.parentElement.getAttribute('item-name');
+    let hexInput = colorPicker.parentElement.querySelector('.hex-input');
 
     let savedTextColor = localStorage.getItem(itemName + '-text-color');
     if (savedTextColor) {
         document.querySelector('body').style.setProperty('--' + itemName + '-text-color', savedTextColor);
     }
 
-    colorPicker.value = savedTextColor || "#FFFFFF";
+    const initialColor = savedTextColor || '#ffffff';
+    colorPicker.value = initialColor;
+    if (hexInput) hexInput.value = initialColor;
 
     let textInputTimer;
 
-    colorPicker.addEventListener('input', () => {
-        document.querySelector('body').style.setProperty('--' + itemName + '-text-color', colorPicker.value);
-
+    function applyColor(hex) {
+        document.querySelector('body').style.setProperty('--' + itemName + '-text-color', hex);
         clearTimeout(textInputTimer);
         textInputTimer = setTimeout(() => {
-            localStorage.setItem(itemName + '-text-color', colorPicker.value);
+            localStorage.setItem(itemName + '-text-color', hex);
         }, 1000);
+    }
+
+    colorPicker.addEventListener('input', () => {
+        if (hexInput) hexInput.value = colorPicker.value;
+        applyColor(colorPicker.value);
     });
+
+    if (hexInput) {
+        hexInput.addEventListener('input', () => {
+            const hex = normalizeHex(hexInput.value);
+            if (hex) {
+                hexInput.classList.remove('invalid');
+                colorPicker.value = hex;
+                applyColor(hex);
+            } else {
+                hexInput.classList.add('invalid');
+            }
+        });
+
+        hexInput.addEventListener('blur', () => {
+            const hex = normalizeHex(hexInput.value);
+            if (hex) {
+                hexInput.value = hex;
+                hexInput.classList.remove('invalid');
+            } else {
+                hexInput.value = colorPicker.value;
+                hexInput.classList.remove('invalid');
+            }
+        });
+    }
 }
 
 const settingsItem = document.querySelectorAll('#settings-sidebar .item-wrapper');
@@ -86,9 +141,27 @@ settingsItem.forEach((settingsItem) => {
         localStorage.setItem(contentId + '-position', JSON.stringify(pos));
     }
 
+    function setActiveIcon(value) {
+        const icon = positionControlWrapper.querySelector(`.icon[data-value="${value}"]`);
+        if (!icon) return;
+        const group = icon.closest('.align-btn-group');
+        if (group) {
+            group.querySelectorAll('.icon').forEach(i => i.classList.remove('active'));
+            icon.classList.add('active');
+        }
+    }
+
     function loadPosition() {
         let saved = localStorage.getItem(contentId + '-position');
-        if (!saved) return;
+
+        if (!saved) {
+            // Set default active icons based on current element state
+            const hDefault = actualContentWrapper.classList.contains('horizontal-center') ? 'horizontal-center' : 'left';
+            const vDefault = actualContentWrapper.classList.contains('vertical-center') ? 'vertical-center' : 'bottom';
+            setActiveIcon(hDefault);
+            setActiveIcon(vDefault);
+            return;
+        }
 
         let pos = JSON.parse(saved);
 
@@ -135,6 +208,9 @@ settingsItem.forEach((settingsItem) => {
             bottomTextInput.removeAttribute('disabled');
             topTextInput.setAttribute('disabled', true);
         }
+
+        setActiveIcon(pos.horizontal);
+        setActiveIcon(pos.vertical);
     }
 
     loadPosition();
@@ -155,7 +231,14 @@ settingsItem.forEach((settingsItem) => {
 
     positionIcons.forEach(icon => {
         icon.addEventListener('click', (e) => {
-            let value = e.currentTarget.getAttribute('data-value');
+            let iconEl = e.currentTarget;
+            const group = iconEl.closest('.align-btn-group');
+            if (group) {
+                group.querySelectorAll('.icon').forEach(i => i.classList.remove('active'));
+                iconEl.classList.add('active');
+            }
+
+            let value = iconEl.getAttribute('data-value');
 
             if (value === 'left') {
                 actualContentWrapper.style.left = '0';
@@ -164,6 +247,7 @@ settingsItem.forEach((settingsItem) => {
 
                 leftTextInput.removeAttribute('disabled');
                 rightTextInput.setAttribute('disabled', true);
+                rightTextInput.value = '';
             }
             else if (value === 'right') {
                 actualContentWrapper.style.right = '0';
@@ -172,6 +256,7 @@ settingsItem.forEach((settingsItem) => {
 
                 rightTextInput.removeAttribute('disabled');
                 leftTextInput.setAttribute('disabled', true);
+                leftTextInput.value = '';
             }
             else if (value === 'horizontal-center') {
                 actualContentWrapper.style.left = 'unset';
@@ -180,6 +265,8 @@ settingsItem.forEach((settingsItem) => {
 
                 leftTextInput.setAttribute('disabled', true);
                 rightTextInput.setAttribute('disabled', true);
+                leftTextInput.value = '';
+                rightTextInput.value = '';
             }
             else if (value === 'top') {
                 actualContentWrapper.style.top = '0';
@@ -188,6 +275,7 @@ settingsItem.forEach((settingsItem) => {
 
                 topTextInput.removeAttribute('disabled');
                 bottomTextInput.setAttribute('disabled', true);
+                bottomTextInput.value = '';
             }
             else if (value === 'bottom') {
                 actualContentWrapper.style.bottom = '0';
@@ -196,6 +284,7 @@ settingsItem.forEach((settingsItem) => {
 
                 bottomTextInput.removeAttribute('disabled');
                 topTextInput.setAttribute('disabled', true);
+                topTextInput.value = '';
             }
             else if (value === 'vertical-center') {
                 actualContentWrapper.style.top = 'unset';
@@ -204,6 +293,8 @@ settingsItem.forEach((settingsItem) => {
 
                 topTextInput.setAttribute('disabled', true);
                 bottomTextInput.setAttribute('disabled', true);
+                topTextInput.value = '';
+                bottomTextInput.value = '';
             }
 
             savePosition();
@@ -278,3 +369,96 @@ settingTabIcons.forEach(icon => {
         });
     });
 })
+
+// ---------------------------
+// Search bar toggle
+// ---------------------------
+const searchWrapper = document.getElementById('search-wrapper');
+const searchToggle = document.getElementById('search-toggle');
+const searchInput = searchWrapper.querySelector('input');
+
+if (localStorage.getItem('search-visible') === 'true') {
+    searchWrapper.classList.add('visible');
+    searchToggle.checked = true;
+}
+
+searchToggle.addEventListener('change', () => {
+    const visible = searchToggle.checked;
+    searchWrapper.classList.toggle('visible', visible);
+    localStorage.setItem('search-visible', visible);
+});
+
+// ---------------------------
+// Search history dropdown
+// ---------------------------
+const historyDropdown = document.getElementById('search-history-dropdown');
+let highlightIndex = -1;
+let historyItems = [];
+
+async function showHistory(query) {
+    if (!chrome?.history) return;
+
+    const results = await chrome.history.search({
+        text: query || '',
+        maxResults: 6,
+        startTime: 0
+    });
+
+    historyItems = results;
+    highlightIndex = -1;
+    historyDropdown.innerHTML = '';
+
+    if (results.length === 0) {
+        historyDropdown.classList.remove('open');
+        return;
+    }
+
+    results.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'history-item';
+        el.innerHTML = `
+            <img src="${getFavicon(item.url)}" alt="">
+            <span class="history-title">${item.title || item.url}</span>
+            <span class="history-url">${item.url}</span>
+        `;
+        el.addEventListener('mousedown', e => {
+            e.preventDefault(); // prevent blur from closing dropdown before click fires
+            window.location.href = item.url;
+        });
+        historyDropdown.appendChild(el);
+    });
+
+    historyDropdown.classList.add('open');
+}
+
+function setHighlight(index) {
+    const items = historyDropdown.querySelectorAll('.history-item');
+    items.forEach((el, i) => el.classList.toggle('highlighted', i === index));
+    highlightIndex = index;
+}
+
+searchInput.addEventListener('focus', () => showHistory(searchInput.value));
+searchInput.addEventListener('input', () => showHistory(searchInput.value));
+
+searchInput.addEventListener('blur', () => {
+    setTimeout(() => historyDropdown.classList.remove('open'), 150);
+});
+
+searchInput.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setHighlight(Math.min(highlightIndex + 1, historyItems.length - 1));
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setHighlight(Math.max(highlightIndex - 1, -1));
+    } else if (e.key === 'Escape') {
+        historyDropdown.classList.remove('open');
+        searchInput.blur();
+    } else if (e.key === 'Enter') {
+        if (highlightIndex >= 0 && historyItems[highlightIndex]) {
+            window.location.href = historyItems[highlightIndex].url;
+        } else if (searchInput.value.trim()) {
+            window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchInput.value.trim());
+        }
+    }
+});
