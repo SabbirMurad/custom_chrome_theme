@@ -371,6 +371,64 @@ settingTabIcons.forEach(icon => {
 })
 
 // ---------------------------
+// Glass color picker
+// ---------------------------
+;(function () {
+    const glassColorPicker = document.getElementById('glass-color-picker');
+    const glassHexInput = document.getElementById('glass-hex-input');
+
+    function hexToRgba(hex, alpha) {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    function applyGlassColor(hex) {
+        document.body.style.setProperty('--glass-bg-color', hexToRgba(hex, 0.18));
+    }
+
+    const savedGlassColor = localStorage.getItem('glass-color') || '#0c0c0c';
+    glassColorPicker.value = savedGlassColor;
+    glassHexInput.value = savedGlassColor;
+    applyGlassColor(savedGlassColor);
+
+    let glassColorTimer;
+
+    glassColorPicker.addEventListener('input', () => {
+        const hex = glassColorPicker.value;
+        glassHexInput.value = hex;
+        applyGlassColor(hex);
+        clearTimeout(glassColorTimer);
+        glassColorTimer = setTimeout(() => localStorage.setItem('glass-color', hex), 1000);
+    });
+
+    glassHexInput.addEventListener('input', () => {
+        const hex = normalizeHex(glassHexInput.value);
+        if (hex) {
+            glassHexInput.classList.remove('invalid');
+            glassColorPicker.value = hex;
+            applyGlassColor(hex);
+            clearTimeout(glassColorTimer);
+            glassColorTimer = setTimeout(() => localStorage.setItem('glass-color', hex), 1000);
+        } else {
+            glassHexInput.classList.add('invalid');
+        }
+    });
+
+    glassHexInput.addEventListener('blur', () => {
+        const hex = normalizeHex(glassHexInput.value);
+        if (hex) {
+            glassHexInput.value = hex;
+            glassHexInput.classList.remove('invalid');
+        } else {
+            glassHexInput.value = glassColorPicker.value;
+            glassHexInput.classList.remove('invalid');
+        }
+    });
+})();
+
+// ---------------------------
 // Search bar toggle
 // ---------------------------
 const searchWrapper = document.getElementById('search-wrapper');
