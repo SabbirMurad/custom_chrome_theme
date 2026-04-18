@@ -3,18 +3,44 @@
   "name": "New Tab",
   "version": "1.0",
   "description": "Shows a clock in the center of the new tab page.",
+  "background": {
+    "service_worker": "service-worker.js"
+  },
   "permissions": [
     "bookmarks",
     "storage",
     "tabs",
     "favicon",
-    "history"
+    "history",
+    "declarativeNetRequest"
   ],
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/embed/*"
+      ],
+      "js": [
+        "content-script.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "sandbox": {
+    "pages": [
+      "player-sandbox.html"
+    ]
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; frame-src https://www.youtube.com; object-src 'none';"
+  },
   "host_permissions": [
-    "file://*/*"
+    "file://*/*",
+    "https://www.youtube.com/*",
+    "https://www.youtube-nocookie.com/*",
+    "https://img.youtube.com/*"
   ],
   "icons": {
     "16": "assets/favicon/icon16.png",
