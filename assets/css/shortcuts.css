@@ -19,12 +19,9 @@
   cursor: pointer;
   /* border-radius: 12px; */
   border-radius: 8px;
-  border: 1px solid rgba(24, 24, 24, 0.2);
 }
 
 #shortcuts-wrapper .item .container {
-  width: 40px;
-  height: 40px;
   /* background: #ffffff33; */
   border-radius: 20px;
   display: flex;
