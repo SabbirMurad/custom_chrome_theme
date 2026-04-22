@@ -506,6 +506,35 @@ input::-moz-focus-outer {
   border: 0;
 }
 
+#settings-sidebar #bg-blend-mode {
+  appearance: none;
+  background: var(--glass-bg-color);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(24, 24, 24, 0.08);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px 32px 6px 10px;
+  margin-bottom: 18px;
+  width: 160px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23ffffff' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+#settings-sidebar #bg-blend-mode:focus {
+  outline: none;
+  border-color: #1abc9c;
+}
+
+#settings-sidebar #bg-blend-mode option {
+  background: #1a1a1a;
+  color: white;
+}
+
 #settings-sidebar .clock-style-wrapper {
   width: 100%;
   display: flex;

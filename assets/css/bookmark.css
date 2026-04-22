@@ -105,6 +105,7 @@
   .bookmark-children
   .bookmark-item {
   margin: 0;
+  overflow: hidden;
 }
 
 #bookmark-container
@@ -116,6 +117,9 @@
   text-align: start;
   line-height: 1.4;
   color: var(--bookmark-text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #bookmark-container .container .bookmark-folder .folder-title:hover {
@@ -126,4 +130,24 @@
   width: 16px;
   height: 16px;
   user-select: none;
+}
+
+#bookmark-container .container .bookmark-folder .bookmark-children > [data-bm-id] {
+  cursor: grab;
+}
+
+#bookmark-container .container .bookmark-folder .bookmark-children > [data-bm-id]:active {
+  cursor: grabbing;
+}
+
+#bookmark-container .container .bookmark-folder .bookmark-children .bm-dragging {
+  opacity: 0.4;
+  outline: 2px dashed rgba(200, 200, 200, 0.45);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+#bookmark-container .container .bookmark-folder.bm-drop-target > .folder-title {
+  background: rgba(255, 255, 255, 0.12);
+  outline: 1px solid rgba(255, 255, 255, 0.3);
 }
